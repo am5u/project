@@ -52,7 +52,7 @@ $total_bookmarked = $select_bookmark->rowCount();
          <img src="../uploaded_files/<?= $fetch_profile['image']; ?>" alt="">
          <h3><?= $fetch_profile['name']; ?></h3>
          <p>student</p>
-         <a href="../update.php" class="inline-btn">update profile</a>
+         <a href="../view/update.php" class="inline-btn">update profile</a>
       </div>
 
       <div class="box-container">

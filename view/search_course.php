@@ -1,6 +1,6 @@
 <?php
 
-include 'components/connect.php';
+include '../components/connect.php';
 
 if(isset($_COOKIE['user_id'])){
    $user_id = $_COOKIE['user_id'];
@@ -22,12 +22,12 @@ if(isset($_COOKIE['user_id'])){
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../css/style.css">
 
 </head>
 <body>
 
-<?php include 'components/user_header.php'; ?>
+<?php include '../components/user_header.php'; ?>
 
 <!-- courses section starts  -->
 
@@ -52,15 +52,15 @@ if(isset($_COOKIE['user_id'])){
       ?>
       <div class="box">
          <div class="tutor">
-            <img src="uploaded_files/<?= $fetch_tutor['image']; ?>" alt="">
+            <img src="../uploaded_files/<?= $fetch_tutor['image']; ?>" alt="">
             <div>
                <h3><?= $fetch_tutor['name']; ?></h3>
                <span><?= $fetch_course['date']; ?></span>
             </div>
          </div>
-         <img src="uploaded_files/<?= $fetch_course['thumb']; ?>" class="thumb" alt="">
+         <img src="../uploaded_files/<?= $fetch_course['thumb']; ?>" class="thumb" alt="">
          <h3 class="title"><?= $fetch_course['title']; ?></h3>
-         <a href="playlist.php?get_id=<?= $course_id; ?>" class="inline-btn">view playlist</a>
+         <a href="../view/playlist.php?get_id=<?= $course_id; ?>" class="inline-btn">view playlist</a>
       </div>
       <?php
          }
@@ -87,10 +87,10 @@ if(isset($_COOKIE['user_id'])){
 
 
 
-<?php include 'components/footer.php'; ?>
+<?php include '../components/footer.php'; ?>
 
 <!-- custom js file link  -->
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
    
 </body>
 </html>

@@ -6,7 +6,7 @@ if(isset($_COOKIE['user_id'])){
    $user_id = $_COOKIE['user_id'];
 }else{
    $user_id = '';
-   header('location:home.php');
+   header('location:../view/home.php');
 }
 
 if(isset($_POST['remove'])){
@@ -43,7 +43,7 @@ if(isset($_POST['remove'])){
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../css/style.css">
 
 </head>
 <body>
@@ -76,17 +76,17 @@ if(isset($_POST['remove'])){
    ?>
    <div class="box">
       <div class="tutor">
-         <img src="uploaded_files/<?= $fetch_tutor['image']; ?>" alt="">
+         <img src="../uploaded_files/<?= $fetch_tutor['image']; ?>" alt="">
          <div>
             <h3><?= $fetch_tutor['name']; ?></h3>
             <span><?= $fetch_contents['date']; ?></span>
          </div>
       </div>
-      <img src="uploaded_files/<?= $fetch_contents['thumb']; ?>" alt="" class="thumb">
+      <img src="../uploaded_files/<?= $fetch_contents['thumb']; ?>" alt="" class="thumb">
       <h3 class="title"><?= $fetch_contents['title']; ?></h3>
       <form action="" method="post" class="flex-btn">
          <input type="hidden" name="content_id" value="<?= $fetch_contents['id']; ?>">
-         <a href="watch_video.php?get_id=<?= $fetch_contents['id']; ?>" class="inline-btn">watch video</a>
+         <a href="../view/watch_video.php?get_id=<?= $fetch_contents['id']; ?>" class="inline-btn">watch video</a>
          <input type="submit" value="remove" class="inline-delete-btn" name="remove">
       </form>
    </div>

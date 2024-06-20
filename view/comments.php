@@ -1,6 +1,6 @@
 <?php
 
-include 'components/connect.php';
+include '../components/connect.php';
 
 if(isset($_COOKIE['user_id'])){
    $user_id = $_COOKIE['user_id'];
@@ -61,12 +61,12 @@ if(isset($_POST['update_now'])){
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../css/style.css">
 
 </head>
 <body>
 
-<?php include 'components/user_header.php'; ?>
+<?php include '../components/user_header.php'; ?>
 
 <?php
    if(isset($_POST['edit_comment'])){
@@ -83,7 +83,7 @@ if(isset($_POST['update_now'])){
       <input type="hidden" name="update_id" value="<?= $fetch_edit_comment['id']; ?>">
       <textarea name="update_box" class="box" maxlength="1000" required placeholder="please enter your comment" cols="30" rows="10"><?= $fetch_edit_comment['comment']; ?></textarea>
       <div class="flex">
-         <a href="comments.php" class="inline-option-btn">cancel edit</a>
+         <a href="../view/comments.php" class="inline-option-btn">cancel edit</a>
          <input type="submit" value="update now" name="update_now" class="inline-btn">
       </div>
    </form>
@@ -111,7 +111,7 @@ if(isset($_POST['update_now'])){
                $fetch_content = $select_content->fetch(PDO::FETCH_ASSOC);
       ?>
       <div class="box" style="<?php if($fetch_comment['user_id'] == $user_id){echo 'order:-1;';} ?>">
-         <div class="content"><span><?= $fetch_comment['date']; ?></span><p> - <?= $fetch_content['title']; ?> - </p><a href="watch_video.php?get_id=<?= $fetch_content['id']; ?>">view content</a></div>
+         <div class="content"><span><?= $fetch_comment['date']; ?></span><p> - <?= $fetch_content['title']; ?> - </p><a href="../view/watch_video.php?get_id=<?= $fetch_content['id']; ?>">view content</a></div>
          <p class="text"><?= $fetch_comment['comment']; ?></p>
          <?php
             if($fetch_comment['user_id'] == $user_id){ 
@@ -146,10 +146,10 @@ if(isset($_POST['update_now'])){
 
 
 
-<?php include 'components/footer.php'; ?>
+<?php include '../components/footer.php'; ?>
 
 <!-- custom js file link  -->
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
    
 </body>
 </html>

@@ -60,7 +60,7 @@ if(isset($_COOKIE['user_id'])){
                <span><?= $fetch_course['date']; ?></span>
             </div>
          </div>
-         <img src="uploaded_files/<?= $fetch_course['thumb']; ?>" class="thumb" alt="">
+         <img src="../uploaded_files/<?= $fetch_course['thumb']; ?>" class="thumb" alt="">
          <h3 class="title"><?= $fetch_course['title']; ?></h3>
          <a href="../view/playlist.php?get_id=<?= $course_id; ?>" class="inline-btn">view playlist</a>
       </div>
