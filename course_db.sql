@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2024 at 05:55 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Generation Time: Jun 20, 2024 at 09:28 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,6 +66,28 @@ CREATE TABLE `bookmark` (
   `user_id` varchar(20) NOT NULL,
   `playlist_id` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cards`
+--
+
+CREATE TABLE `cards` (
+  `id` int(11) NOT NULL,
+  `numcard` int(16) NOT NULL,
+  `cardholder` varchar(255) NOT NULL,
+  `cvv` int(4) NOT NULL,
+  `Exmonth` int(2) NOT NULL,
+  `Exyear` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cards`
+--
+
+INSERT INTO `cards` (`id`, `numcard`, `cardholder`, `cvv`, `Exmonth`, `Exyear`) VALUES
+(3, 2147483647, 'Ammmar eldesouki ', 3243, 6, 2027);
 
 -- --------------------------------------------------------
 
@@ -133,7 +155,8 @@ CREATE TABLE `content` (
 --
 
 INSERT INTO `content` (`id`, `tutor_id`, `playlist_id`, `title`, `description`, `video`, `thumb`, `date`, `status`) VALUES
-('REgsenT5dPHf6suVyufT', '4O9mR9j1spXUztfKnkhc', 'rA7cNbcX6DFkSamzzVaE', 'Html', 'HTML stands for Hyper Text Markup Language\r\n\r\nHTML is the standard markup language for Web pages\r\n\r\nHTML elements are the building blocks of HTML pages\r\n\r\nHTML elements are represented by  tags', '8vBG0A2K9BLkoHEisNXb.webm', 'ulUWhfSGFDZwuCqBOCZf.jpg', '2024-06-17', 'active');
+('REgsenT5dPHf6suVyufT', '4O9mR9j1spXUztfKnkhc', 'rA7cNbcX6DFkSamzzVaE', 'Html', 'HTML stands for Hyper Text Markup Language\r\n\r\nHTML is the standard markup language for Web pages\r\n\r\nHTML elements are the building blocks of HTML pages\r\n\r\nHTML elements are represented by  tags', '8vBG0A2K9BLkoHEisNXb.webm', 'ulUWhfSGFDZwuCqBOCZf.jpg', '2024-06-17', 'active'),
+('qYvtbsPqk0WmqpmMpm0m', 'Zwx8C4gzODZmZO2AWNMg', 'cyMK16LMOKtyYAhJiyTa', 'intro to cafee', 'latte', 'epW4sYurHMRdl907tSmS.MOV', 'xQ1qk8MaeqSQCJksH6pO.JPG', '2024-06-20', 'active');
 
 -- --------------------------------------------------------
 
@@ -205,7 +228,8 @@ CREATE TABLE `playlist` (
 --
 
 INSERT INTO `playlist` (`id`, `tutor_id`, `title`, `description`, `thumb`, `date`, `status`) VALUES
-('rA7cNbcX6DFkSamzzVaE', '4O9mR9j1spXUztfKnkhc', 'HTML ', 'HTML stands for Hyper Text Markup Language\r\n\r\nHTML is the standard markup language for Web pages\r\n\r\nHTML elements are the building blocks of HTML pages\r\n\r\nHTML elements are represented by  tags', 'CXqfZ4WRWJpnTlixy0Pn.jpg', '2024-06-17', 'active');
+('rA7cNbcX6DFkSamzzVaE', '4O9mR9j1spXUztfKnkhc', 'HTML ', 'HTML stands for Hyper Text Markup Language\r\n\r\nHTML is the standard markup language for Web pages\r\n\r\nHTML elements are the building blocks of HTML pages\r\n\r\nHTML elements are represented by  tags', 'CXqfZ4WRWJpnTlixy0Pn.jpg', '2024-06-17', 'active'),
+('cyMK16LMOKtyYAhJiyTa', 'Zwx8C4gzODZmZO2AWNMg', 'beginner of brista', 'from zero to hero', 'fZZtB7dulsKcnQ4efVkk.JPG', '2024-06-20', 'active');
 
 -- --------------------------------------------------------
 
@@ -229,7 +253,8 @@ CREATE TABLE `tutors` (
 INSERT INTO `tutors` (`id`, `name`, `profession`, `email`, `password`, `image`) VALUES
 ('4O9mR9j1spXUztfKnkhc', 'esraa', '', 'esraa@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'osxBqbAfcr5qx06hRRSb.jpg'),
 ('RBhV94LJyf05ptRCh1R4', 'Mariam Yasser', '', 'yassermariam422@gmai', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'j7hyfAy4i6uuXhk7590H.jpg'),
-('PWj9GKLgn9TNyNypS7GS', 'ASER ISLAM', '', 'TimedoorAcademy@hotm', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'THRKgTYH3cZDv2uytlFk.jpg');
+('PWj9GKLgn9TNyNypS7GS', 'ASER ISLAM', '', 'TimedoorAcademy@hotm', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'THRKgTYH3cZDv2uytlFk.jpg'),
+('Zwx8C4gzODZmZO2AWNMg', 'ammar', 'lawyer', 'ammareldesouki130@gm', 'bceb3a3a918f21dae9aff95b6308fbdc8ab7233e', 'EV9BoCBz43Qu8swQMTkx.jpg');
 
 -- --------------------------------------------------------
 
@@ -276,6 +301,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `image`, `city`, `rollno`, `pcontact`, `standard`) VALUES
+('6i4xI3RFitCb4nQdO0Ve', 'ammar', 'ammareldesouki130@gm', 'bceb3a3a918f21dae9aff95b6308fbdc8ab7233e', 'jXVtVGVaeFa4zu1O9T3D.jpg', '', 0, 0, 0),
 ('aBgOxhbMkuVMpqD5TcSb', 'mariam', 'yassermariam422@gmai', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'ppZl10PwaYztkGSAapqW.jpg', '', 0, 0, 0);
 
 --
@@ -286,6 +312,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `image`, `city`, `rollno
 -- Indexes for table `admin_accounts`
 --
 ALTER TABLE `admin_accounts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cards`
+--
+ALTER TABLE `cards`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -314,6 +346,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin_accounts`
 --
 ALTER TABLE `admin_accounts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `cards`
+--
+ALTER TABLE `cards`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --

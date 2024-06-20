@@ -1,9 +1,9 @@
 <?php
 
-   include 'connect.php';
+   include '../components/connect.php';
 
    setcookie('user_id', '', time() - 1, '/');
 
-   header('location:../home.php');
+   header('location:../view/home.php');
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-include 'components/connect.php';
+include '../components/connect.php';
 
 if(isset($_COOKIE['user_id'])){
    $user_id = $_COOKIE['user_id'];
@@ -138,12 +138,12 @@ if(isset($_POST['update_now'])){
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../css/style.css">
 
 </head>
 <body>
 
-<?php include 'components/user_header.php'; ?>
+<?php include '../components/user_header.php'; ?>
 
 <?php
    if(isset($_POST['edit_comment'])){
@@ -160,7 +160,7 @@ if(isset($_POST['update_now'])){
       <input type="hidden" name="update_id" value="<?= $fetch_edit_comment['id']; ?>">
       <textarea name="update_box" class="box" maxlength="1000" required placeholder="please enter your comment" cols="30" rows="10"><?= $fetch_edit_comment['comment']; ?></textarea>
       <div class="flex">
-         <a href="watch_video.php?get_id=<?= $get_id; ?>" class="inline-option-btn">cancel edit</a>
+         <a href="../view/watch_video.php?get_id=<?= $get_id; ?>" class="inline-option-btn">cancel edit</a>
          <input type="submit" value="update now" name="update_now" class="inline-btn">
       </div>
    </form>
@@ -195,14 +195,14 @@ if(isset($_POST['update_now'])){
             $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);
    ?>
    <div class="video-details">
-      <video src="uploaded_files/<?= $fetch_content['video']; ?>" class="video" poster="uploaded_files/<?= $fetch_content['thumb']; ?>" controls autoplay></video>
+      <video src="../uploaded_files/<?= $fetch_content['video']; ?>" class="video" poster="uploaded_files/<?= $fetch_content['thumb']; ?>" controls autoplay></video>
       <h3 class="title"><?= $fetch_content['title']; ?></h3>
       <div class="info">
          <p><i class="fas fa-calendar"></i><span><?= $fetch_content['date']; ?></span></p>
          <p><i class="fas fa-heart"></i><span><?= $total_likes; ?> likes</span></p>
       </div>
       <div class="tutor">
-         <img src="uploaded_files/<?= $fetch_tutor['image']; ?>" alt="">
+         <img src="../uploaded_files/<?= $fetch_tutor['image']; ?>" alt="">
          <div>
             <h3><?= $fetch_tutor['name']; ?></h3>
             <span><?= $fetch_tutor['profession']; ?></span>
@@ -210,7 +210,7 @@ if(isset($_POST['update_now'])){
       </div>
       <form action="" method="post" class="flex">
          <input type="hidden" name="content_id" value="<?= $content_id; ?>">
-         <a href="playlist.php?get_id=<?= $fetch_content['playlist_id']; ?>" class="inline-btn">view playlist</a>
+         <a href="../view/playlist.php?get_id=<?= $fetch_content['playlist_id']; ?>" class="inline-btn">view playlist</a>
          <?php
             if($verify_likes->rowCount() > 0){
          ?>
@@ -263,7 +263,7 @@ if(isset($_POST['update_now'])){
       ?>
       <div class="box" style="<?php if($fetch_comment['user_id'] == $user_id){echo 'order:-1;';} ?>">
          <div class="user">
-            <img src="uploaded_files/<?= $fetch_commentor['image']; ?>" alt="">
+            <img src="../uploaded_files/<?= $fetch_commentor['image']; ?>" alt="">
             <div>
                <h3><?= $fetch_commentor['name']; ?></h3>
                <span><?= $fetch_comment['date']; ?></span>
@@ -301,10 +301,10 @@ if(isset($_POST['update_now'])){
 
 
 
-<?php include 'components/footer.php'; ?>
+<?php include '../components/footer.php'; ?>
 
 <!-- custom js file link  -->
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
    
 </body>
 </html>

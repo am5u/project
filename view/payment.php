@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/stylepayment.css">
+    <link rel="stylesheet" href="../css/stylepayment.css">
 
 </head>
 <body>
@@ -17,8 +17,8 @@
 
         <div class="front">
             <div class="image">
-                <img src="images/chip.png" alt="">
-                <img src="images/visa.png" alt="">
+                <img src="../images/chip.png" alt="">
+                <img src="../images/visa.png" alt="">
             </div>
             <div class="card-number-box">################</div>
             <div class="flexbox">
@@ -41,13 +41,13 @@
             <div class="box">
                 <span>cvv</span>
                 <div class="cvv-box"></div>
-                <img src="image/visa.png" alt="">
+                <img src="../image/visa.png" alt="">
             </div>
         </div>
 
     </div>
 
-    <form action="savecard.php" method="post">
+    <form action="../savecard.php" method="post">
         <div class="inputBox">
             <span>card number</span>
             <input name="card-number-input" type="text" maxlength="16" class="card-number-input">

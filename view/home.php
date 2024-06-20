@@ -55,11 +55,11 @@ $total_bookmarked = $select_bookmark->rowCount();
       <div class="box">
          <h3 class="title">likes and comments</h3>
          <p>total likes : <span><?= $total_likes; ?></span></p>
-         <a href="likes.php" class="inline-btn">view likes</a>
+         <a href="../view/likes.php" class="inline-btn">view likes</a>
          <p>total comments : <span><?= $total_comments; ?></span></p>
-         <a href="comments.php" class="inline-btn">view comments</a>
+         <a href="../view/comments.php" class="inline-btn">view comments</a>
          <p>saved playlist : <span><?= $total_bookmarked; ?></span></p>
-         <a href="bookmark.php" class="inline-btn">view bookmark</a>
+         <a href="../view/bookmark.php" class="inline-btn">view bookmark</a>
       </div>
       <?php
          }else{ 
@@ -67,8 +67,8 @@ $total_bookmarked = $select_bookmark->rowCount();
       <div class="box" style="text-align: center;">
          <h3 class="title">please login or register</h3>
           <div class="flex-btn" style="padding-top: .5rem;">
-            <a href="login.php" class="option-btn">login</a>
-            <a href="register.php" class="option-btn">register</a>
+            <a href="../view/login.php" class="option-btn">login</a>
+            <a href="../view/register.php" class="option-btn">register</a>
          </div>
       </div>
       <?php
@@ -78,7 +78,7 @@ $total_bookmarked = $select_bookmark->rowCount();
       <div class="box">
          <h3 class="title">top categories</h3>
          <div class="flex">
-            <a href="search_course.php?"><i class="fas fa-code"></i><span>development</span></a>
+            <a href="../view/search_course.php?"><i class="fas fa-code"></i><span>development</span></a>
             <a href="#"><i class="fas fa-chart-simple"></i><span>business</span></a>
             <a href="#"><i class="fas fa-pen"></i><span>design</span></a>
             <a href="#"><i class="fas fa-chart-line"></i><span>marketing</span></a>
@@ -104,7 +104,7 @@ $total_bookmarked = $select_bookmark->rowCount();
       <div class="box tutor">
          <h3 class="title">become a tutor</h3>
          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, laudantium.</p>
-         <a href="admin/register.php" class="inline-btn">get started</a>
+         <a href="../admin/register.php" class="inline-btn">get started</a>
       </div>
 
    </div>
@@ -142,7 +142,7 @@ $total_bookmarked = $select_bookmark->rowCount();
          </div>
          <img src="../uploaded_files/<?= $fetch_course['thumb']; ?>" class="thumb" alt="">
          <h3 class="title"><?= $fetch_course['title']; ?></h3>
-         <a href="../playlist.php?get_id=<?= $course_id; ?>" class="inline-btn">view playlist</a>
+         <a href="../view/playlist.php?get_id=<?= $course_id; ?>" class="inline-btn">view playlist</a>
       </div>
       <?php
          }

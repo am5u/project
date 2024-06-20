@@ -84,7 +84,7 @@ if(isset($_COOKIE['user_id'])){
          <p>total videos : <span><?= $total_contents ?></span></p>
          <p>total likes : <span><?= $total_likes ?></span></p>
          <p>total comments : <span><?= $total_comments ?></span></p>
-         <form action="tutor_profile.php" method="post">
+         <form action="../view/tutor_profile.php" method="post">
             <input type="hidden" name="tutor_email" value="<?= $fetch_tutor['email']; ?>">
             <input type="submit" value="view profile" name="tutor_fetch" class="inline-btn">
          </form>

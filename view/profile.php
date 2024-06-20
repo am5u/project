@@ -1,12 +1,12 @@
 <?php
 
-include 'components/connect.php';
+include '../components/connect.php';
 
 if(isset($_COOKIE['user_id'])){
    $user_id = $_COOKIE['user_id'];
 }else{
    $user_id = '';
-   header('location:login.php');
+   header('location:../view/login.php');
 }
 
 $select_likes = $conn->prepare("SELECT * FROM `likes` WHERE user_id = ?");
@@ -35,12 +35,12 @@ $total_bookmarked = $select_bookmark->rowCount();
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../css/style.css">
 
 </head>
 <body>
 
-<?php include 'components/user_header.php'; ?>
+<?php include '../components/user_header.php'; ?>
 
 <section class="profile">
 
@@ -49,10 +49,10 @@ $total_bookmarked = $select_bookmark->rowCount();
    <div class="details">
 
       <div class="user">
-         <img src="uploaded_files/<?= $fetch_profile['image']; ?>" alt="">
+         <img src="../uploaded_files/<?= $fetch_profile['image']; ?>" alt="">
          <h3><?= $fetch_profile['name']; ?></h3>
          <p>student</p>
-         <a href="update.php" class="inline-btn">update profile</a>
+         <a href="../update.php" class="inline-btn">update profile</a>
       </div>
 
       <div class="box-container">
@@ -120,7 +120,7 @@ $total_bookmarked = $select_bookmark->rowCount();
 <!-- footer section ends -->
 
 <!-- custom js file link  -->
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
    
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-include 'components/connect.php';
+include '../components/connect.php';
 
 if(isset($_COOKIE['user_id'])){
    $user_id = $_COOKIE['user_id'];
@@ -42,12 +42,12 @@ if(isset($_POST['submit'])){
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../css/style.css">
 
 </head>
 <body>
 
-<?php include 'components/user_header.php'; ?>
+<?php include '../components/user_header.php'; ?>
 
 <section class="form-container">
 
@@ -57,7 +57,7 @@ if(isset($_POST['submit'])){
       <input type="email" name="email" placeholder="enter your email" maxlength="50" required class="box">
       <p>your password <span>*</span></p>
       <input type="password" name="pass" placeholder="enter your password" maxlength="20" required class="box">
-      <p class="link">don't have an account? <a href="register.php">register now</a></p>
+      <p class="link">don't have an account? <a href="../view/register.php">register now</a></p>
       <input type="submit" name="submit" value="login now" class="btn">
    </form>
 
@@ -74,10 +74,10 @@ if(isset($_POST['submit'])){
 
 
 
-<?php include 'components/footer.php'; ?>
+<?php include '../components/footer.php'; ?>
 
 <!-- custom js file link  -->
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
    
 </body>
 </html>

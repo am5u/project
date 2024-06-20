@@ -1,6 +1,6 @@
 <?php
 
-include 'components/connect.php';
+include '../components/connect.php';
 
 if(isset($_COOKIE['user_id'])){
    $user_id = $_COOKIE['user_id'];
@@ -12,7 +12,7 @@ if(isset($_GET['get_id'])){
    $get_id = $_GET['get_id'];
 }else{
    $get_id = '';
-   header('location:home.php');
+   header('location:../view/home.php');
 }
 
 if(isset($_POST['save_list'])){
@@ -55,12 +55,12 @@ if(isset($_POST['save_list'])){
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../css/style.css">
 
 </head>
 <body>
 
-<?php include 'components/user_header.php'; ?>
+<?php include '../components/user_header.php'; ?>
 
 <!-- playlist section starts  -->
 
@@ -108,13 +108,13 @@ if(isset($_POST['save_list'])){
          </form>
          <div class="thumb">
             <span><?= $total_videos; ?> videos</span>
-            <img src="uploaded_files/<?= $fetch_playlist['thumb']; ?>" alt="">
+            <img src="../uploaded_files/<?= $fetch_playlist['thumb']; ?>" alt="">
          </div>
       </div>
 
       <div class="col">
          <div class="tutor">
-            <img src="uploaded_files/<?= $fetch_tutor['image']; ?>" alt="">
+            <img src="../uploaded_files/<?= $fetch_tutor['image']; ?>" alt="">
             <div>
                <h3><?= $fetch_tutor['name']; ?></h3>
                <span><?= $fetch_tutor['profession']; ?></span>
@@ -153,9 +153,9 @@ if(isset($_POST['save_list'])){
          if($select_content->rowCount() > 0){
             while($fetch_content = $select_content->fetch(PDO::FETCH_ASSOC)){  
       ?>
-      <a href="watch_video.php?get_id=<?= $fetch_content['id']; ?>" class="box">
+      <a href="../view/watch_video.php?get_id=<?= $fetch_content['id']; ?>" class="box">
          <i class="fas fa-play"></i>
-         <img src="uploaded_files/<?= $fetch_content['thumb']; ?>" alt="">
+         <img src="../uploaded_files/<?= $fetch_content['thumb']; ?>" alt="">
          <h3><?= $fetch_content['title']; ?></h3>
       </a>
       <?php
@@ -181,10 +181,10 @@ if(isset($_POST['save_list'])){
 
 
 
-<?php include 'components/footer.php'; ?>
+<?php include '../components/footer.php'; ?>
 
 <!-- custom js file link  -->
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
    
 </body>
 </html>
