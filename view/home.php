@@ -1,57 +1,56 @@
 <?php
 
 include "../components/connect.php";
+session_start();
 
-if(isset($_COOKIE['user_id'])){
-   $user_id = $_COOKIE['user_id'];
-}else{
-   $user_id = '';
+
+if(isset($_SESSION['user_id'])){
+   
+   $select_likes = $conn->prepare("SELECT * FROM `likes` WHERE user_id = ?");
+   $select_likes->execute([$_SESSION['user_id']]);
+   $total_likes = $select_likes->rowCount();
+   
+   $select_comments = $conn->prepare("SELECT * FROM `comments` WHERE user_id = ?");
+   $select_comments->execute([$_SESSION['user_id']]);
+   $total_comments = $select_comments->rowCount();
+   
+   $select_bookmark = $conn->prepare("SELECT * FROM `bookmark` WHERE user_id = ?");
+   $select_bookmark->execute([$_SESSION['user_id']]);
+   $total_bookmarked = $select_bookmark->rowCount();
 }
+   ?>
 
-$select_likes = $conn->prepare("SELECT * FROM `likes` WHERE user_id = ?");
-$select_likes->execute([$user_id]);
-$total_likes = $select_likes->rowCount();
-
-$select_comments = $conn->prepare("SELECT * FROM `comments` WHERE user_id = ?");
-$select_comments->execute([$user_id]);
-$total_comments = $select_comments->rowCount();
-
-$select_bookmark = $conn->prepare("SELECT * FROM `bookmark` WHERE user_id = ?");
-$select_bookmark->execute([$user_id]);
-$total_bookmarked = $select_bookmark->rowCount();
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>home</title>
-
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="../css/style.css">
-
-</head>
-<body>
-
-<?php include '../components/user_header.php'; ?>
-
-<!-- quick select section starts  -->
-
-<section class="quick-select">
-
-   <h1 class="heading">quick options</h1>
-
-   <div class="box-container">
-
-      <?php
-         if($user_id != ''){
-      ?>
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>home</title>
+      
+      <!-- font awesome cdn link  -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+      
+      <!-- custom css file link  -->
+      <link rel="stylesheet" href="../css/style.css">
+      
+   </head>
+   <body>
+      
+      <?php include '../components/user_header.php'; ?>
+      
+      <!-- quick select section starts  -->
+      
+      <section class="quick-select">
+         
+         <h1 class="heading">quick options</h1>
+         
+         <div class="box-container">
+            
+            <?php
+         if(isset($_SESSION['user_id'])){
+            ?>
       <div class="box">
          <h3 class="title">likes and comments</h3>
          <p>total likes : <span><?= $total_likes; ?></span></p>
@@ -63,10 +62,10 @@ $total_bookmarked = $select_bookmark->rowCount();
       </div>
       <?php
          }else{ 
-      ?>
+            ?>
       <div class="box" style="text-align: center;">
          <h3 class="title">please login or register</h3>
-          <div class="flex-btn" style="padding-top: .5rem;">
+         <div class="flex-btn" style="padding-top: .5rem;">
             <a href="../view/login.php" class="option-btn">login</a>
             <a href="../view/register.php" class="option-btn">register</a>
          </div>
@@ -75,21 +74,16 @@ $total_bookmarked = $select_bookmark->rowCount();
       }
       ?>
 
-      <div class="box">
-         <h3 class="title">top categories</h3>
-         <div class="flex">
-            <a href="../view/search_course.php?"><i class="fas fa-code"></i><span>development</span></a>
-            <a href="#"><i class="fas fa-chart-simple"></i><span>business</span></a>
-            <a href="#"><i class="fas fa-pen"></i><span>design</span></a>
-            <a href="#"><i class="fas fa-chart-line"></i><span>marketing</span></a>
-            <a href="#"><i class="fas fa-music"></i><span>music</span></a>
-            <a href="#"><i class="fas fa-camera"></i><span>photography</span></a>
-            <a href="#"><i class="fas fa-cog"></i><span>software</span></a>
-            <a href="#"><i class="fas fa-vial"></i><span>science</span></a>
-         </div>
-      </div>
+<div class="box">
+   <h3 class="title">top categories</h3>
+   <div class="flex">
+      <a href="../view/search_course.php?"><i class="fas fa-code"></i><span>development</span></a>
+      <a href="#"><i class="fas fa-chart-simple"></i><span>Softskills</span></a>
+     
+   </div>
+</div>
 
-      <div class="box">
+<div class="box">
          <h3 class="title">popular topics</h3>
          <div class="flex">
             <a href="#"><i class="fab fa-html5"></i><span>HTML</span></a>
@@ -100,11 +94,17 @@ $total_bookmarked = $select_bookmark->rowCount();
             <a href="#"><i class="fab fa-bootstrap"></i><span>bootstrap</span></a>
          </div>
       </div>
-
       <div class="box tutor">
-         <h3 class="title">become a tutor</h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, laudantium.</p>
-         <a href="../admin/register.php" class="inline-btn">get started</a>
+         
+                 <?php 
+                 
+                 if ($_SESSION['user_usertype'] != 'tutor' ) { ?>             
+                 
+                   <h3 class="title">become a tutor</h3>
+                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, laudantium.</p>
+                     <a href="../admin/register.php" class="inline-btn">get started</a>
+                  <?php }  ?>
+
       </div>
 
    </div>
@@ -129,7 +129,7 @@ $total_bookmarked = $select_bookmark->rowCount();
                $course_id = $fetch_course['id'];
 
                $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ?");
-               $select_tutor->execute([$fetch_course['tutor_id']]);
+               $select_tutor->execute([$fetch_course['id']]);
                $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);
       ?>
       <div class="box">
@@ -180,4 +180,5 @@ $total_bookmarked = $select_bookmark->rowCount();
 <script src="../js/script.js"></script>
    
 </body>
+
 </html>

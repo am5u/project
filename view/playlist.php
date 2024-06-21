@@ -1,37 +1,33 @@
 <?php
 
 include '../components/connect.php';
+session_start();
 
-if(isset($_COOKIE['user_id'])){
-   $user_id = $_COOKIE['user_id'];
-}else{
-   $user_id = '';
-}
 
 if(isset($_GET['get_id'])){
-   $get_id = $_GET['get_id'];
-}else{
-   $get_id = '';
-   header('location:../view/home.php');
+
+   $playlist_id=$_GET['get_id'];
 }
+
+
 
 if(isset($_POST['save_list'])){
 
-   if($user_id != ''){
+   if(isset($_SESSION['user_id'])){
       
       $list_id = $_POST['list_id'];
       $list_id = filter_var($list_id, FILTER_SANITIZE_STRING);
 
       $select_list = $conn->prepare("SELECT * FROM `bookmark` WHERE user_id = ? AND playlist_id = ?");
-      $select_list->execute([$user_id, $list_id]);
+      $select_list->execute([$_SESSION['user_id'], $list_id]);
 
       if($select_list->rowCount() > 0){
          $remove_bookmark = $conn->prepare("DELETE FROM `bookmark` WHERE user_id = ? AND playlist_id = ?");
-         $remove_bookmark->execute([$user_id, $list_id]);
+         $remove_bookmark->execute([$_SESSION['user_id'], $list_id]);
          $message[] = 'playlist removed!';
       }else{
          $insert_bookmark = $conn->prepare("INSERT INTO `bookmark`(user_id, playlist_id) VALUES(?,?)");
-         $insert_bookmark->execute([$user_id, $list_id]);
+         $insert_bookmark->execute([$_SESSION['user_id'], $list_id]);
          $message[] = 'playlist saved!';
       }
 
@@ -72,7 +68,7 @@ if(isset($_POST['save_list'])){
 
       <?php
          $select_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? and status = ? LIMIT 1");
-         $select_playlist->execute([$get_id, 'active']);
+         $select_playlist->execute([ $playlist_id, 'active']);
          if($select_playlist->rowCount() > 0){
             $fetch_playlist = $select_playlist->fetch(PDO::FETCH_ASSOC);
 
@@ -83,19 +79,19 @@ if(isset($_POST['save_list'])){
             $total_videos = $count_videos->rowCount();
 
             $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ? LIMIT 1");
-            $select_tutor->execute([$fetch_playlist['tutor_id']]);
+            $select_tutor->execute([ $playlist_id]);
             $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);
-
+          if(isset($_SESSION['user_id'])){
             $select_bookmark = $conn->prepare("SELECT * FROM `bookmark` WHERE user_id = ? AND playlist_id = ?");
-            $select_bookmark->execute([$user_id, $playlist_id]);
-
+            $select_bookmark->execute([ $_SESSION['user_id'], $playlist_id]);
+                     }
       ?>
 
       <div class="col">
          <form action="" method="post" class="save-list">
             <input type="hidden" name="list_id" value="<?= $playlist_id; ?>">
             <?php
-               if($select_bookmark->rowCount() > 0){
+               if(isset($_SESSION['user_id']) && $select_bookmark->rowCount() > 0){
             ?>
             <button type="submit" name="save_list"><i class="fas fa-bookmark"></i><span>saved</span></button>
             <?php
@@ -149,7 +145,7 @@ if(isset($_POST['save_list'])){
 
       <?php
          $select_content = $conn->prepare("SELECT * FROM `content` WHERE playlist_id = ? AND status = ? ORDER BY date DESC");
-         $select_content->execute([$get_id, 'active']);
+         $select_content->execute([ $playlist_id, 'active']);
          if($select_content->rowCount() > 0){
             while($fetch_content = $select_content->fetch(PDO::FETCH_ASSOC)){  
       ?>

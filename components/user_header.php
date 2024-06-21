@@ -15,7 +15,7 @@ if(isset($message)){
 
    <section class="flex">
 
-      <a href="home.php" class="logo">Educa.</a>
+      <a href="home.php" class="logo">CODING HEROES</a>
 
       <form action="search_course.php" method="post" class="search-form">
          <input type="text" name="search_course" placeholder="search courses..." required maxlength="100">
@@ -27,26 +27,39 @@ if(isset($message)){
          <div id="search-btn" class="fas fa-search"></div>
          <div id="user-btn" class="fas fa-user"></div>
          <div id="toggle-btn" class="fas fa-sun"></div>
+         <?php if ( isset($_SESSION['user_id']) && $_SESSION['user_usertype']=='tutor') { ?>
+         <button><a href="../admin/add_playlist.php"> add play list</a></button>
+         <?php } ?>
       </div>
 
       <div class="profile">
-         <?php
+<?php
+         if(isset($_SESSION['user_id'])){
+
+                       
             $select_profile = $conn->prepare("SELECT * FROM `users` WHERE id = ?");
-            $select_profile->execute([$user_id]);
+            $select_profile->execute([$_SESSION['user_id']]);
             if($select_profile->rowCount() > 0){
             $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
          ?>
-         <img src="../uploaded_files/<?= $fetch_profile['image']; ?>" alt="">
-         <h3><?= $fetch_profile['name']; ?></h3>
+         <img src="../uploaded_files/<?=  $_SESSION['user_image']; ?>" alt="">
+         <h3><?=  $_SESSION['user_name'] ?></h3>
+         <?php }?>
          <span>student</span>
-         <a href="profile.php" class="btn">view profile</a>
-         <div class="flex-btn">
-            <a href="../view/login.php" class="option-btn">login</a>
-            <a href="../view/register.php" class="option-btn">register</a>
+        
+         <?php if ($_SESSION['user_usertype'] == 'tutor' ) { ?>
+            <a href="../teacher/dashboard.php" class="btn">view profile</a>
+            <?php }else { ?>
+           
+               <a href="profile.php" class="btn">view profile</a>
+                     <?php }  ?>
+              <div class="flex-btn">
+
+                 <a href="../components/user_logout.php" onclick="return confirm('logout from this website?');" class="delete-btn">logout</a>
+                   
          </div>
-         <a href="../components/user_logout.php" onclick="return confirm('logout from this website?');" class="delete-btn">logout</a>
          <?php
-            }else{
+            } else {
          ?>
          <h3>please login or register</h3>
           <div class="flex-btn">
@@ -54,7 +67,7 @@ if(isset($message)){
             <a href="../view/register.php" class="option-btn">register</a>
          </div>
          <?php
-            }
+                   }
          ?>
       </div>
 
@@ -74,14 +87,17 @@ if(isset($message)){
 
    <div class="profile">
          <?php
+         if(isset($_SESSION['user_id'])){
+            
             $select_profile = $conn->prepare("SELECT * FROM `users` WHERE id = ?");
-            $select_profile->execute([$user_id]);
+            $select_profile->execute([$_SESSION['user_id']]);
             if($select_profile->rowCount() > 0){
-            $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
+               $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
+            }
          ?>
-         <img src="../uploaded_files/<?= $fetch_profile['image']; ?>" alt="">
-         <h3><?= $fetch_profile['name']; ?></h3>
-         <span>student</span>
+         <img src="../uploaded_files/<?= $_SESSION['user_image']; ?>" alt="">
+         <h3><?=  $_SESSION['user_name']; ?></h3>
+         <span><?= $_SESSION['user_usertype']?></span>
          <a href="profile.php" class="btn">view profile</a>
          <?php
             }else{

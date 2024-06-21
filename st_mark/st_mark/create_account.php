@@ -16,7 +16,7 @@ if(!isset($_FILES['image']['tmp_name']))
 	$username = $_POST['username']; 
 	$password = $_POST['password']; 
 	$usertype = "te";
-	$dir = "images/";
+	$dir = "../../uploaded_files/";
 	$target_file = $dir.basename($_FILES["image"]["name"]);
 	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 	$file=$_FILES['image']['tmp_name'];

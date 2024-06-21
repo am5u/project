@@ -4,7 +4,7 @@
  include_once "header.php";  
 $id = $_SESSION['id'];
 
- $sql = "SELECT * FROM admin_accounts where id = '".$id."'";
+ $sql = "SELECT * FROM admins where id = '".$id."'";
             
     $query = mysqli_query($conn, $sql); 
           

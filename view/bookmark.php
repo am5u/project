@@ -2,13 +2,7 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['user_id'])){
-   $user_id = $_COOKIE['user_id'];
-}else{
-   $user_id = '';
-   header('location:home.php');
-}
-
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +32,7 @@ if(isset($_COOKIE['user_id'])){
 
       <?php
          $select_bookmark = $conn->prepare("SELECT * FROM `bookmark` WHERE user_id = ?");
-         $select_bookmark->execute([$user_id]);
+         $select_bookmark->execute([$_SESSION['user_usertype']]);
          if($select_bookmark->rowCount() > 0){
             while($fetch_bookmark = $select_bookmark->fetch(PDO::FETCH_ASSOC)){
                $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? AND status = ? ORDER BY date DESC");

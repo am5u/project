@@ -1,26 +1,32 @@
 <?php
 
+
+
 include '../components/connect.php';
 
-if(isset($_COOKIE['user_id'])){
-   $user_id = $_COOKIE['user_id'];
-}else{
-   $user_id = '';
-}
+
 
 if(isset($_POST['submit'])){
 
    $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
-   $pass = sha1($_POST['pass']);
-   $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+   $pass = $_POST['pass'];
 
-   $select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ? AND password = ? LIMIT 1");
+   $select_user = $conn->prepare("SELECT * FROM `users` WHERE email =? AND password =? LIMIT 1");
    $select_user->execute([$email, $pass]);
    $row = $select_user->fetch(PDO::FETCH_ASSOC);
    
    if($select_user->rowCount() > 0){
-     setcookie('user_id', $row['id'], time() + 60*60*24*30, '/');
+     session_start();
+     $_SESSION['user_id'] = $row['id'];
+     $_SESSION['user_name'] = $row['name'];
+     $_SESSION['user_email'] = $row['email'];
+     $_SESSION['user_image'] = $row['image'];
+     $_SESSION['user_usertype'] = $row['usertype'];
+     // Add more columns as needed
+     $_SESSION['user_column1'] = $row['column1'];
+     $_SESSION['user_column2'] = $row['column2'];
+     //...
+     
      header('location:home.php');
    }else{
       $message[] = 'incorrect email or password!';

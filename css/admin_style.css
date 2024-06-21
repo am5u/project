@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
 
 :root{
-   --main-color:#003C43;
+   --main-color:white;
    --white: #E3FEF7;
    --black:#003C43;
    --light-color:#77B0AA;
    --light-bg:#E3FEF7;
-   --border:.1rem solid #003C43 ;
+   --border:.1rem solid white ;
 }
 
 *{
@@ -41,13 +41,13 @@ html{
 }
 
 body{
-   background-color: #E3FEF7;
+   background-color: white;
    padding-left: 30rem;
    /* padding-bottom: 7rem; */
 }
 
 body.dark{
-   --white:#003C43;
+   --white:white;
    --black:#E3FEF7;
    --light-color:#135D66;
    --light-bg:#77B0AA;
@@ -95,12 +95,12 @@ section{
 
 .btn,
 .inline-btn{
-   background-color: #77B0AA;
+   background-color: white;
 }
 
 .option-btn,
 .inline-option-btn{
-   background-color: #77B0AA;
+   background-color: white;
 }
 
 .delete-btn,
@@ -115,7 +115,7 @@ section{
 .inline-option-btn:hover,
 .inline-delete-btn:hover{
    background-color: #135D66;
-   color:#003C43;
+   color:white;
 }
 
 .flex-btn{
@@ -137,7 +137,7 @@ section{
 .message.form{
    max-width: 1200px;
    margin: 0 auto;
-   background-color:#77B0AA;
+   background-color:white;
    top: 2rem;
    border-radius: .5rem;
 }
@@ -170,16 +170,16 @@ section{
 
 .heading{
    padding-bottom: 1.8rem;
-   border-bottom: #003C43;
+   border-bottom: white;
    font-size: 2.5rem;
-   color: #135D66;
+   color: white;
    text-transform: capitalize;
    margin-bottom: 2rem;
 }
 
 .header{
-   background-color: #77B0AA;
-   border-bottom: #003C43;
+   background-color: white;
+   border-bottom: white;
    position: sticky;
    top: 0; left: 0; right: 0;
    z-index: 1000;
@@ -206,30 +206,30 @@ section{
    align-items: center;
    gap: 2rem;
    padding: 1.5rem 2rem;
-   background-color: #77B0AA;
+   background-color: gainsboro;
 }
 
 .header .flex .search-form input{
    width: 100%;
    background:none;
    font-size: 2rem;
-   color: #135D66;
+   color: gainsboro;
 }
 
 .header .flex .search-form button{
    font-size: 2rem;
-   color: #003C43;
+   color: gainsboro;
    cursor: pointer;
    background: none;
 }
 
 .header .flex .search-form button:hover{
-   color: #003C43;
+   color: black;
 }
 
 .header .flex .icons div{
    font-size: 2rem;
-   color: #003C43;
+   color: whitesmoke;
    border-radius: .5rem;
    height: 4.5rem;
    cursor: pointer;
@@ -242,7 +242,7 @@ section{
 
 .header .flex .icons div:hover{
    background-color: #003C43;
-   color:#77B0AA;
+   color:whitesmoke;
 }
 
 #search-btn{
@@ -252,7 +252,7 @@ section{
 .header .flex .profile{
    position: absolute;
    top: 120%; right: 2rem;
-   background-color: #77B0AA;
+   background-color: white;
    border-radius: .5rem;
    padding: 2rem;
    text-align: center;
@@ -276,11 +276,11 @@ section{
 
 .header .flex .profile h3{
    font-size: 2rem;
-   color: #003C43;
+   color: white;
 }
 
 .header .flex .profile span{
-   color: #135D66;
+   color: white;
    font-size: 1.6rem;
 }
 
@@ -293,8 +293,8 @@ section{
    top: 0; left: 0;
    height: 100vh;
    width: 30rem;
-   background-color: #77B0AA;
-   border-right: #003C43;
+   background-color: whitesmoke;
+   border-right: #135D66;
    z-index: 1200;
 }
 
@@ -310,9 +310,9 @@ section{
    width: 4.5rem;
    line-height: 4.4rem;
    font-size: 2.5rem;
-   color: #E3FEF7;
+   color: #135D66;
    cursor: pointer;
-   background-color: #003C43;
+   background-color: whitesmoke;
    text-align: center;
    border-radius: .5rem;
 }
@@ -388,7 +388,7 @@ section{
    background-color: #E3FEF7;
    border-radius: .5rem;
    padding: 2rem;
-   border: 5px solid #135D66;
+   border: 5px solid white;
 }
 
 .form-container .login{
@@ -403,7 +403,7 @@ section{
    text-align: center;
    font-size: 2.5rem;
    margin-bottom: 1rem;
-   color: #003C43;
+   color: #135D66;
    text-transform: capitalize;
 }
 
@@ -439,8 +439,8 @@ section{
    font-size: 1.8rem;
    color: #003C43;
    padding: 1.4rem;
-   background-color: #E3FEF7;
-   border:3px solid #135D66;
+   background-color: #135D66;
+   border:3px solid white;
 }
 
 .form-container .flex{
@@ -463,7 +463,7 @@ section{
 .dashboard .box-container .box{
    padding: 2rem;
    border-radius: .5rem;
-   background-color:#135D66;
+   background-color:gainsboro;
    text-align: center;
 }
 
@@ -479,10 +479,13 @@ section{
    color: #135D66;
    padding: 1rem 1.5rem;
    border-radius: .5rem;
-   background-color: #77B0AA;
+   background-color: white;
    margin: 1rem 0;
 }
-
+.dashboard .box-container .box p :hover{
+   background-color: #003C43;
+}
+/* lhnaaaaa */
 .tutor-profile .details{
    background-color: #77B0AA;
    border-radius: .5rem;

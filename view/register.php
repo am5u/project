@@ -2,33 +2,32 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['user_id'])){
-   $user_id = $_COOKIE['user_id'];
-}else{
-   $user_id = '';
-}
+
 
 if(isset($_POST['submit'])){
 
-   $id = unique_id();
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
+   
    $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
-   $pass = sha1($_POST['pass']);
-   $pass = filter_var($pass, FILTER_SANITIZE_STRING);
-   $cpass = sha1($_POST['cpass']);
-   $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
-
+   $pass =  $_POST['pass'];
+   $cpass = $_POST['cpass'];
    $image = $_FILES['image']['name'];
-   $image = filter_var($image, FILTER_SANITIZE_STRING);
-   $ext = pathinfo($image, PATHINFO_EXTENSION);
-   $rename = unique_id().'.'.$ext;
-   $image_size = $_FILES['image']['size'];
-   $image_tmp_name = $_FILES['image']['tmp_name'];
-   $image_folder = '../uploaded_files/'.$rename;
 
-   $select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ?");
+   $image = filter_var($image, FILTER_SANITIZE_STRING);
+   
+   $ext = pathinfo($image, PATHINFO_EXTENSION);
+   
+   $image_size = $_FILES['image']['size'];
+   
+   $image_tmp_name = $_FILES['image']['tmp_name'];
+   
+   $image_folder = '../uploaded_files/';
+   
+   $image_path = $image_folder . $image;
+   move_uploaded_file($image_tmp_name, $image_path);
+
+
+   $select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ? ");
    $select_user->execute([$email]);
    
    if($select_user->rowCount() > 0){
@@ -37,18 +36,25 @@ if(isset($_POST['submit'])){
       if($pass != $cpass){
          $message[] = 'confirm passowrd not matched!';
       }else{
-         $insert_user = $conn->prepare("INSERT INTO `users`(id, name, email, password, image) VALUES(?,?,?,?,?)");
-         $insert_user->execute([$id, $name, $email, $cpass, $rename]);
-         move_uploaded_file($image_tmp_name, $image_folder);
+         $insert_user = $conn->prepare("INSERT INTO `users`( name, email, password, image,usertype) VALUES(?,?,?,?,?)");
+         $insert_user->execute([ $name, $email, $cpass, $image,'Student']);
          
          $verify_user = $conn->prepare("SELECT * FROM `users` WHERE email = ? AND password = ? LIMIT 1");
          $verify_user->execute([$email, $pass]);
          $row = $verify_user->fetch(PDO::FETCH_ASSOC);
+         session_start();
+
+         $_SESSION['user_id'] = $row['id'];
+     
+         $_SESSION['user_name'] = $row['name'];
+     
+         $_SESSION['user_email'] = $row['email'];
+     
+         $_SESSION['user_image'] = $row['image'];
+     
+         $_SESSION['user_usertype'] = $row['usertype'];
          
-         if($verify_user->rowCount() > 0){
-            setcookie('user_id', $row['id'], time() + 60*60*24*30, '/');
-            header('location:../view/home.php');
-         }
+          
       }
    }
 
@@ -82,9 +88,9 @@ if(isset($_POST['submit'])){
       <div class="flex">
          <div class="col">
             <p>your name <span>*</span></p>
-            <input type="text" name="name" placeholder="eneter your name" maxlength="50" required class="box">
+            <input type="text" name="name" placeholder="eneter your name"  required class="box">
             <p>your email <span>*</span></p>
-            <input type="email" name="email" placeholder="enter your email" maxlength="20" required class="box">
+            <input type="email" name="email" placeholder="enter your email" required class="box">
          </div>
          <div class="col">
             <p>your password <span>*</span></p>

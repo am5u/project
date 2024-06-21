@@ -12,20 +12,20 @@ img{
 require_once './conn/conn.php';
  include_once "header.php";  
 session_start();
-$type = $_GET['usertype'];
+$type =  $_SESSION['admin_usertype'];
     
- $sql = "SELECT * FROM admin_accounts where usertype = '".$type."'";
+ $sql = "SELECT * FROM admins where email = '".$type."'";
             
     $query = mysqli_query($conn, $sql); 
           
     while ($row = mysqli_fetch_array($query)){
-    	$image = $row['picture'];
+    	$image = $row['image'];
 }
 
 if(isset($_POST['login'])){
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$query1 = "SELECT * FROM admin_accounts where username='$username' 
+	$query1 = "SELECT * FROM admins where email='$username' 
 	and password = '$password' and usertype = '$type'";
 
 	$result	= mysqli_query($conn,$query1);

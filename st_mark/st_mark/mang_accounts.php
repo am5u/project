@@ -7,7 +7,7 @@ td{width: 20%;}
 </style>
 
 <?php
-require_once './conn/conn.php';
+include '../components/connect.php';
  include_once "header.php";  
 
 session_start();
@@ -42,7 +42,7 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] == '')
 			<?php
 					
                             
- $sql = "SELECT * FROM admin_accounts order by id ASC";
+ $sql = "SELECT * FROM admins order by id ASC";
             
     $query = mysqli_query($conn, $sql); 
           
@@ -54,7 +54,7 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] == '')
 							<td><?php echo $row['username']; ?></td>
 							<td><?php echo $row['password']; ?></td>
 							<td><?php echo $row['usertype']; ?></td>
-							<td><img src="images/<?php echo $row['picture'];?>"></td>
+							<td><img src="../../uploaded_files/<?php echo $row['picture'];?>"></td>
 
 							<td>
 							<a class="btn btn-outline-info btn-lg" 

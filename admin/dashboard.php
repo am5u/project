@@ -1,28 +1,21 @@
 <?php
 
 include '../components/connect.php';
-
-if(isset($_COOKIE['tutor_id'])){
-   $tutor_id = $_COOKIE['tutor_id'];
-}else{
-   $tutor_id = '';
-   header('location:login.php');
-}
-
-$select_contents = $conn->prepare("SELECT * FROM `content` WHERE tutor_id = ?");
-$select_contents->execute([$tutor_id]);
+session_start();
+$select_contents = $conn->prepare("SELECT * FROM `content` WHERE id = ?");
+$select_contents->execute([$_SESSION['admin_id']]);
 $total_contents = $select_contents->rowCount();
 
-$select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ?");
-$select_playlists->execute([$tutor_id]);
+$select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE id = ?");
+$select_playlists->execute([$_SESSION['admin_id']]);
 $total_playlists = $select_playlists->rowCount();
 
-$select_likes = $conn->prepare("SELECT * FROM `likes` WHERE tutor_id = ?");
-$select_likes->execute([$tutor_id]);
+$select_likes = $conn->prepare("SELECT * FROM `likes` WHERE id = ?");
+$select_likes->execute([$_SESSION['admin_id']]);
 $total_likes = $select_likes->rowCount();
 
-$select_comments = $conn->prepare("SELECT * FROM `comments` WHERE tutor_id = ?");
-$select_comments->execute([$tutor_id]);
+$select_comments = $conn->prepare("SELECT * FROM `comments` WHERE id = ?");
+$select_comments->execute([$_SESSION['admin_id']]);
 $total_comments = $select_comments->rowCount();
 
 ?>
@@ -54,7 +47,7 @@ $total_comments = $select_comments->rowCount();
 
       <div class="box">
          <h3>welcome!</h3>
-         <p><?= $fetch_profile['name']; ?></p>
+         <p><?=  $_SESSION['admin_name']; ?></p>
          <a href="profile.php" class="btn">view profile</a>
       </div>
 
@@ -82,13 +75,18 @@ $total_comments = $select_comments->rowCount();
          <a href="comments.php" class="btn">view comments</a>
       </div>
 
-      <div class="box">
+      <!-- <div class="box">
          <h3>quick select</h3>
          <p>login or register</p>
          <div class="flex-btn">
             <a href="login.php" class="option-btn">login</a>
             <a href="register.php" class="option-btn">register</a>
          </div>
+      </div> -->
+      <div class="box">
+         <h3>Manage Students</h3>
+         <p>Add,Delete,Remove </p>
+         <a href="mang_accounts.php" class="btn">view Manage</a>
       </div>
 
    </div>

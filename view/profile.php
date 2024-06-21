@@ -2,23 +2,18 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['user_id'])){
-   $user_id = $_COOKIE['user_id'];
-}else{
-   $user_id = '';
-   header('location:../view/login.php');
-}
+session_start();
 
 $select_likes = $conn->prepare("SELECT * FROM `likes` WHERE user_id = ?");
-$select_likes->execute([$user_id]);
+$select_likes->execute([$_SESSION['user_id']]);
 $total_likes = $select_likes->rowCount();
 
 $select_comments = $conn->prepare("SELECT * FROM `comments` WHERE user_id = ?");
-$select_comments->execute([$user_id]);
+$select_comments->execute([$_SESSION['user_id']]);
 $total_comments = $select_comments->rowCount();
 
 $select_bookmark = $conn->prepare("SELECT * FROM `bookmark` WHERE user_id = ?");
-$select_bookmark->execute([$user_id]);
+$select_bookmark->execute([$_SESSION['user_id']]);
 $total_bookmarked = $select_bookmark->rowCount();
 
 ?>
@@ -49,8 +44,8 @@ $total_bookmarked = $select_bookmark->rowCount();
    <div class="details">
 
       <div class="user">
-         <img src="../uploaded_files/<?= $fetch_profile['image']; ?>" alt="">
-         <h3><?= $fetch_profile['name']; ?></h3>
+         <img src="../uploaded_files/<?= $_SESSION['user_image'] ; ?>" alt="">
+         <h3><?=  $_SESSION['user_name']; ?></h3>
          <p>student</p>
          <a href="../view/update.php" class="inline-btn">update profile</a>
       </div>
@@ -65,7 +60,7 @@ $total_bookmarked = $select_bookmark->rowCount();
                   <span>saved playlists</span>
                </div>
             </div>
-            <a href="#" class="inline-btn">view playlists</a>
+            <a href="../view/playlist.php" class="inline-btn">view playlists</a>
          </div>
 
          <div class="box">
@@ -111,11 +106,6 @@ $total_bookmarked = $select_bookmark->rowCount();
 
 <!-- footer section starts  -->
 
-<footer class="footer">
-
-   &copy; copyright @ 2022 by <span>mr. web designer</span> | all rights reserved!
-
-</footer>
 
 <!-- footer section ends -->
 

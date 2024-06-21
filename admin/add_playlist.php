@@ -1,36 +1,32 @@
 <?php
 
 include '../components/connect.php';
-
-if(isset($_COOKIE['tutor_id'])){
-   $tutor_id = $_COOKIE['tutor_id'];
-}else{
-   $tutor_id = '';
-   header('location:login.php');
-}
+session_start();
 
 if(isset($_POST['submit'])){
 
    $id = unique_id();
    $title = $_POST['title'];
-   $title = filter_var($title, FILTER_SANITIZE_STRING);
    $description = $_POST['description'];
-   $description = filter_var($description, FILTER_SANITIZE_STRING);
    $status = $_POST['status'];
-   $status = filter_var($status, FILTER_SANITIZE_STRING);
 
    $image = $_FILES['image']['name'];
    $image = filter_var($image, FILTER_SANITIZE_STRING);
+   
    $ext = pathinfo($image, PATHINFO_EXTENSION);
-   $rename = unique_id().'.'.$ext;
+   
    $image_size = $_FILES['image']['size'];
+   
    $image_tmp_name = $_FILES['image']['tmp_name'];
-   $image_folder = '../uploaded_files/'.$rename;
+   
+   $image_folder = '../uploaded_files/';
+   
+   $image_path = $image_folder . $image;
+   move_uploaded_file($image_tmp_name, $image_path);
 
-   $add_playlist = $conn->prepare("INSERT INTO `playlist`(id, tutor_id, title, description, thumb, status) VALUES(?,?,?,?,?,?)");
-   $add_playlist->execute([$id, $tutor_id, $title, $description, $rename, $status]);
+   $add_playlist = $conn->prepare("INSERT INTO `playlist`(tutor_id, title, description, thumb, status) VALUES(?,?,?,?,?)");
+   $add_playlist->execute([ $_SESSION['user_id'], $title, $description, $image, $status]);
 
-   move_uploaded_file($image_tmp_name, $image_folder);
 
    $message[] = 'new playlist created!';  
 
@@ -55,7 +51,7 @@ if(isset($_POST['submit'])){
 </head>
 <body>
 
-<?php include '../components/admin_header.php'; ?>
+<?php include '../components/user_header.php'; ?>
    
 <section class="playlist-form">
 

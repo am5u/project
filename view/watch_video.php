@@ -1,12 +1,8 @@
 <?php
 
 include '../components/connect.php';
+session_start();
 
-if(isset($_COOKIE['user_id'])){
-   $user_id = $_COOKIE['user_id'];
-}else{
-   $user_id = '';
-}
 
 if(isset($_GET['get_id'])){
    $get_id = $_GET['get_id'];
@@ -17,7 +13,7 @@ if(isset($_GET['get_id'])){
 
 if(isset($_POST['like_content'])){
 
-   if($user_id != ''){
+   if(isset($_SESSION['user_id'])){
 
       $content_id = $_POST['content_id'];
       $content_id = filter_var($content_id, FILTER_SANITIZE_STRING);
@@ -29,15 +25,15 @@ if(isset($_POST['like_content'])){
       $tutor_id = $fetch_content['tutor_id'];
 
       $select_likes = $conn->prepare("SELECT * FROM `likes` WHERE user_id = ? AND content_id = ?");
-      $select_likes->execute([$user_id, $content_id]);
+      $select_likes->execute([$_SESSION['user_id'], $content_id]);
 
       if($select_likes->rowCount() > 0){
          $remove_likes = $conn->prepare("DELETE FROM `likes` WHERE user_id = ? AND content_id = ?");
-         $remove_likes->execute([$user_id, $content_id]);
+         $remove_likes->execute([$_SESSION['user_id'], $content_id]);
          $message[] = 'removed from likes!';
       }else{
          $insert_likes = $conn->prepare("INSERT INTO `likes`(user_id, tutor_id, content_id) VALUES(?,?,?)");
-         $insert_likes->execute([$user_id, $tutor_id, $content_id]);
+         $insert_likes->execute([$_SESSION['user_id'], $tutor_id, $content_id]);
          $message[] = 'added to likes!';
       }
 
@@ -49,13 +45,10 @@ if(isset($_POST['like_content'])){
 
 if(isset($_POST['add_comment'])){
 
-   if($user_id != ''){
+   if(isset($_SESSION['user_id'])){
 
-      $id = unique_id();
       $comment_box = $_POST['comment_box'];
-      $comment_box = filter_var($comment_box, FILTER_SANITIZE_STRING);
       $content_id = $_POST['content_id'];
-      $content_id = filter_var($content_id, FILTER_SANITIZE_STRING);
 
       $select_content = $conn->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
       $select_content->execute([$content_id]);
@@ -66,13 +59,13 @@ if(isset($_POST['add_comment'])){
       if($select_content->rowCount() > 0){
 
          $select_comment = $conn->prepare("SELECT * FROM `comments` WHERE content_id = ? AND user_id = ? AND tutor_id = ? AND comment = ?");
-         $select_comment->execute([$content_id, $user_id, $tutor_id, $comment_box]);
+         $select_comment->execute([$content_id, $_SESSION['user_id'], $tutor_id, $comment_box]);
 
          if($select_comment->rowCount() > 0){
             $message[] = 'comment already added!';
          }else{
-            $insert_comment = $conn->prepare("INSERT INTO `comments`(id, content_id, user_id, tutor_id, comment) VALUES(?,?,?,?,?)");
-            $insert_comment->execute([$id, $content_id, $user_id, $tutor_id, $comment_box]);
+            $insert_comment = $conn->prepare("INSERT INTO `comments`( content_id, user_id, tutor_id, comment) VALUES(?,?,?,?)");
+            $insert_comment->execute([ $content_id, $_SESSION['user_id'], $tutor_id, $comment_box]);
             $message[] = 'new comment added!';
          }
 
@@ -188,7 +181,7 @@ if(isset($_POST['update_now'])){
             $total_likes = $select_likes->rowCount();  
 
             $verify_likes = $conn->prepare("SELECT * FROM `likes` WHERE user_id = ? AND content_id = ?");
-            $verify_likes->execute([$user_id, $content_id]);
+            $verify_likes->execute([$_SESSION['user_id'], $content_id]);
 
             $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ? LIMIT 1");
             $select_tutor->execute([$fetch_content['tutor_id']]);
@@ -271,7 +264,7 @@ if(isset($_POST['update_now'])){
          </div>
          <p class="text"><?= $fetch_comment['comment']; ?></p>
          <?php
-            if($fetch_comment['user_id'] == $user_id){ 
+            if(isset($_SESSION['user_id'])&&$fetch_comment['user_id'] == $_SESSION['user_id']){ 
          ?>
          <form action="" method="post" class="flex-btn">
             <input type="hidden" name="comment_id" value="<?= $fetch_comment['id']; ?>">

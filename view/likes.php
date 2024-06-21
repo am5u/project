@@ -13,7 +13,6 @@ if(isset($_POST['remove'])){
 
    if($user_id != ''){
       $content_id = $_POST['content_id'];
-      $content_id = filter_var($content_id, FILTER_SANITIZE_STRING);
 
       $verify_likes = $conn->prepare("SELECT * FROM `likes` WHERE user_id = ? AND content_id = ?");
       $verify_likes->execute([$user_id, $content_id]);
