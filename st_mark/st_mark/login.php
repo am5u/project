@@ -9,40 +9,32 @@ img{
 </style>
 
 <?php
-require_once './conn/conn.php';
+ require_once './conn/conn.php';
  include_once "header.php";  
-session_start();
-$type =  $_SESSION['admin_usertype'];
+  session_start();
+  $email= $_SESSION['admin_email'];
     
- $sql = "SELECT * FROM admins where email = '".$type."'";
-            
-    $query = mysqli_query($conn, $sql); 
-          
-    while ($row = mysqli_fetch_array($query)){
-    	$image = $row['image'];
-}
 
 if(isset($_POST['login'])){
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$query1 = "SELECT * FROM admins where email='$username' 
-	and password = '$password' and usertype = '$type'";
+	$query1 = "SELECT * FROM admins where email='$email' 
+	and password = '$password' ";
 
 	$result	= mysqli_query($conn,$query1);
 	$row  = mysqli_fetch_array($result);
 
-	if(is_array($row)) {
-		$_SESSION["id"] = $row['id'];
-		if($type == "ADMIN"){
+		
+
+
+
+
+
+	
 			header('location: mang_accounts.php');
-		} elseif($type == "te"){
-			header('location:st_view.php');
-		}
-	} 
-	else 
-	{
-		echo "<script>alert('اسم المستخدم او كلمه المرور خاطئه')</script>";
-	}
+	
+	
+	
 }
 ?>
 
@@ -56,10 +48,10 @@ if(isset($_POST['login'])){
 	
       <div class="container">
          <form role="form" action="" method="post">
-		 <strong>(<?php echo $type;?>)</strong>
+		 <strong>(<?php echo $_SESSION['admin_usertype'];?>)</strong>
 								<br>
 								<?php 
-								if($type == "ADMIN"){	           
+								if($_SESSION['admin_usertype'] == "ADMIN"){	           
 								?>
 			<img src="images/<?php echo $image;?>"
 		 </center>
@@ -98,7 +90,7 @@ if(isset($_POST['login'])){
          </form>
 		 <div class="form-group">
                <div class="col-sm-offset-2 col-sm-10">
-			   <a href="index.php"><button  name="login" 
+			   <a href="mang_accounts.php"><button  name="login" 
             class="btn btn-warning col-lg-12" data-toggle="modal">
                رجوع
                   </button></a>

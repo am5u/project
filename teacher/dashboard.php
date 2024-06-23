@@ -67,6 +67,8 @@ $total_comments = $select_comments->rowCount();
       <div class="box">
          <h3><?= $total_likes; ?></h3>
          <p>total likes</p>
+         <a href="likes.php" class="btn">view likes</a>
+
       </div>
 
       <div class="box">
@@ -74,7 +76,11 @@ $total_comments = $select_comments->rowCount();
          <p>total comments</p>
          <a href="comments.php" class="btn">view comments</a>
       </div>
-
+      <div class="box">
+         <h3>Manage Students</h3>
+         <p>Add,Delete,Remove </p>
+         <a href="mang_accounts.php" class="btn">view Manage</a>
+      </div>
   
 
    </div>

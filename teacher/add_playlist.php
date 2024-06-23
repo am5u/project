@@ -1,9 +1,17 @@
 <?php
 
 include '../components/connect.php';
-session_start();
 
 if(isset($_POST['submit'])){
+   
+//...
+session_start();
+
+// Fetch user data from tutors table
+
+
+//...
+
 
    $id = unique_id();
    $title = $_POST['title'];
@@ -25,7 +33,7 @@ if(isset($_POST['submit'])){
    move_uploaded_file($image_tmp_name, $image_path);
 
    $add_playlist = $conn->prepare("INSERT INTO `playlist`(tutor_id, title, description, thumb, status) VALUES(?,?,?,?,?)");
-   $add_playlist->execute([ $_SESSION['user_id'], $title, $description, $image, $status]);
+   $add_playlist->execute([ $_SESSION['teacher_id'], $title, $description, $image, $status]);
 
 
    $message[] = 'new playlist created!';  

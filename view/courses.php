@@ -4,9 +4,12 @@ include '../components/connect.php';
 
 if(isset($_COOKIE['user_id'])){
    $user_id = $_COOKIE['user_id'];
-}else{
+   $_SESSION['user_id'] = $user_id; // set session variable
+} else {
    $user_id = '';
 }
+
+session_start();
 
 ?>
 
@@ -38,15 +41,20 @@ if(isset($_COOKIE['user_id'])){
    <div class="box-container">
 
       <?php
-         $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE status = ? ORDER BY date DESC");
-         $select_courses->execute(['active']);
-         if($select_courses->rowCount() > 0){
-            while($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)){
-               $course_id = $fetch_course['id'];
+       if(isset($_SESSION['user_id'])) {
+          $select_subscription = $conn->prepare("SELECT * FROM `courses` WHERE user_id = ?");
+          $select_subscription->execute([$_SESSION['user_id']]);
+          if($select_subscription->rowCount() > 0) {
+             while($fetch_subscribtion = $select_subscription->fetch(PDO::FETCH_ASSOC)){
+                $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE id= ? AND status = ? ORDER BY date DESC");
+                $select_courses->execute([$fetch_subscribtion['playlist_id'], 'active']);
+                if($select_courses->rowCount() > 0) {
+                   while($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)){
+                      $course_id = $fetch_course['id'];
 
-               $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ?");
-               $select_tutor->execute([$fetch_course['tutor_id']]);
-               $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);
+                      $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ?");
+                      $select_tutor->execute([$fetch_course['tutor_id']]);
+                      $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);
       ?>
       <div class="box">
          <div class="tutor">
@@ -60,11 +68,17 @@ if(isset($_COOKIE['user_id'])){
          <h3 class="title"><?= $fetch_course['title']; ?></h3>
          <a href="../view/playlist.php?get_id=<?= $course_id; ?>" class="inline-btn">view playlist</a>
       </div>
-      <?php
-         }
-      }else{
-         echo '<p class="empty">no courses added yet!</p>';
-      }
+      <?php }
+                } else {
+                   echo '<p class="empty">no courses added yet!</p>';
+                }
+             }
+          } else {
+             echo '<p class="empty">no courses added yet!</p>';
+          }
+       } else {
+          echo '<p class="empty">please login to view your courses!</p>';
+       }
       ?>
 
    </div>

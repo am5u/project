@@ -32,7 +32,7 @@ session_start();
 
       <?php
          $select_bookmark = $conn->prepare("SELECT * FROM `bookmark` WHERE user_id = ?");
-         $select_bookmark->execute([$_SESSION['user_usertype']]);
+         $select_bookmark->execute([$_SESSION['user_id']]);
          if($select_bookmark->rowCount() > 0){
             while($fetch_bookmark = $select_bookmark->fetch(PDO::FETCH_ASSOC)){
                $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? AND status = ? ORDER BY date DESC");

@@ -38,7 +38,7 @@ if(isset($_POST['submit'])){
       }else{
          $insert_user = $conn->prepare("INSERT INTO `users`( name, email, password, image,usertype) VALUES(?,?,?,?,?)");
          $insert_user->execute([ $name, $email, $cpass, $image,'Student']);
-         
+         header('Location: home.php');
          $verify_user = $conn->prepare("SELECT * FROM `users` WHERE email = ? AND password = ? LIMIT 1");
          $verify_user->execute([$email, $pass]);
          $row = $verify_user->fetch(PDO::FETCH_ASSOC);

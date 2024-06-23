@@ -19,7 +19,7 @@ require_once './conn/conn.php';
                
 <!--						<input type="submit"  value="Search Student">-->
 					</td>
-				</tr>
+				</tr> 
 			
 			</table>
 		</form>

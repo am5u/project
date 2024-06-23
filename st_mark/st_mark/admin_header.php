@@ -2,16 +2,14 @@
 
 <?php
  include_once "header.php";  
-$id = $_SESSION['id'];
-
- $sql = "SELECT * FROM admins where id = '".$id."'";
+session_start();
+ $sql = "SELECT * FROM admins where id = '".$_SESSION['admin_id']."'";
             
     $query = mysqli_query($conn, $sql); 
           
     while ($row = mysqli_fetch_array($query)){
-	$picture = $row['picture'];
-	$lastname = $row['lastname'];
-	$firstname = $row['firstname'];
+	$picture = $row['image'];
+	$lastname = $row['name'];
 }
 ?>
 <br>

@@ -7,19 +7,21 @@ td{width: 20%;}
 </style>
 
 <?php
-include '../components/connect.php';
- include_once "header.php";  
+include 'conn/conn.php';
 
-session_start();
-if(!isset($_SESSION["id"]) || $_SESSION["id"] == '') 
+include ('admin_header.php');
+include ('header.php');
+
+if(!isset($_SESSION["admin_id"]) ) 
 {
 	header('location: index.php');
 }
 ?>
 <body>
 
+
 	
-		<?php include('admin_header.php');?>
+	
 		<br>
 		<form action="" post="POST">
 		<table class="table  table-responsive table-lg table-md table-sm  
@@ -42,19 +44,17 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] == '')
 			<?php
 					
                             
- $sql = "SELECT * FROM admins order by id ASC";
+ $sql = "SELECT * FROM tutors order by id ASC";
             
     $query = mysqli_query($conn, $sql); 
           
     while ($row = mysqli_fetch_array($query)){	?>
 		<tbody>
 			               <td><?php echo $row['id']; ?></td>
-							<td><?php echo $row['firstname']; ?></td>
-							<td><?php echo $row['lastname']; ?></td>
-							<td><?php echo $row['username']; ?></td>
+							<td><?php echo $row['name']; ?></td>
+							<td><?php echo $row['email']; ?></td>
 							<td><?php echo $row['password']; ?></td>
-							<td><?php echo $row['usertype']; ?></td>
-							<td><img src="../../uploaded_files/<?php echo $row['picture'];?>"></td>
+							<td><img src="../../uploaded_files/<?php echo $row['image'];?>"></td>
 
 							<td>
 							<a class="btn btn-outline-info btn-lg" 

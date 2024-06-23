@@ -1,3 +1,4 @@
+
 <?php
 
 include "../components/connect.php";
@@ -102,7 +103,7 @@ if(isset($_SESSION['user_id'])){
                  
                    <h3 class="title">become a tutor</h3>
                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, laudantium.</p>
-                     <a href="../admin/register.php" class="inline-btn">get started</a>
+                     <a href="../teacher/register.php" class="inline-btn">get started</a>
                   <?php }  ?>
 
       </div>
@@ -129,8 +130,10 @@ if(isset($_SESSION['user_id'])){
                $course_id = $fetch_course['id'];
 
                $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ?");
-               $select_tutor->execute([$fetch_course['id']]);
+               $select_tutor->execute([$fetch_course['tutor_id']]);
                $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);
+
+              
       ?>
       <div class="box">
          <div class="tutor">
@@ -142,15 +145,23 @@ if(isset($_SESSION['user_id'])){
          </div>
          <img src="../uploaded_files/<?= $fetch_course['thumb']; ?>" class="thumb" alt="">
          <h3 class="title"><?= $fetch_course['title']; ?></h3>
-         <a href="../view/playlist.php?get_id=<?= $course_id; ?>" class="inline-btn">view playlist</a>
+         
+         <?php
+if (isset($_SESSION['user_id'])) {
+    $select_subscription = $conn->prepare("SELECT * FROM `courses` WHERE user_id =? AND playlist_id =?");
+    $select_subscription->execute([$_SESSION['user_id'], $course_id]);
+    $is_subscribed = $select_subscription->rowCount() > 0;
+    if ($is_subscribed) {?>
+        <a href="../view/playlist.php?get_id=<?= $course_id;?>" class="inline-btn">View Playlist</a>
+    <?php } else {?>
+        <a href="../view/payment.php?get_id=<?= $course_id;?>" class="inline-btn">Subscribe $50</a>
+    <?php }
+} else {?>
+    <a href="../login.php" class="inline-btn">Subscribe $50</a>
+<?php }?>
       </div>
-      <?php
-         }
-      }else{
-         echo '<p class="empty">no courses added yet!</p>';
-      }
-      ?>
-
+     
+<?php } } ?>
    </div>
 
    <div class="more-btn">

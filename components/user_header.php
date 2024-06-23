@@ -9,8 +9,8 @@ if(isset($message)){
       ';
    }
 }
-?>
 
+?>
 <header class="header">
 
    <section class="flex">
@@ -49,10 +49,12 @@ if(isset($message)){
         
          <?php if ($_SESSION['user_usertype'] == 'tutor' ) { ?>
             <a href="../teacher/dashboard.php" class="btn">view profile</a>
-            <?php }else { ?>
-           
-               <a href="profile.php" class="btn">view profile</a>
-                     <?php }  ?>
+            <?php }else { 
+                     if($_SESSION['user_usertype'] == 'Admin') {?> <a href="../admin/dashboard.php" class="btn">view profile</a><?php }else{ ?>              
+               ?>
+                     
+               <a href="../students/dashboard.php" class="btn">view profile</a>
+                     <?php } }  ?>
               <div class="flex-btn">
 
                  <a href="../components/user_logout.php" onclick="return confirm('logout from this website?');" class="delete-btn">logout</a>
@@ -76,7 +78,6 @@ if(isset($message)){
 </header>
 
 <!-- header section ends -->
-
 <!-- side bar section starts  -->
 
 <div class="side-bar">

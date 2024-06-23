@@ -15,17 +15,37 @@ if(isset($_POST['submit'])){
    $select_user->execute([$email, $pass]);
    $row = $select_user->fetch(PDO::FETCH_ASSOC);
    
+   session_start();
    if($select_user->rowCount() > 0){
-     session_start();
+   
+   
+      
      $_SESSION['user_id'] = $row['id'];
      $_SESSION['user_name'] = $row['name'];
      $_SESSION['user_email'] = $row['email'];
      $_SESSION['user_image'] = $row['image'];
      $_SESSION['user_usertype'] = $row['usertype'];
+
+     if($_SESSION['user_usertype']=='tutor'){
+
+      $query = $conn->prepare("SELECT * FROM tutors WHERE email =?");
+      $query->execute([ $_SESSION['user_email']]);
+      $row = $query->fetch();
+      
+      // Store user data in session
+      $_SESSION['teacher_id'] = $row['id'];    
+      $_SESSION['teacher_name'] = $row['name'];
+      $_SESSION['teacher_email'] =$row['email'];
+      $_SESSION['teacher_image'] = $row['image'];
+      $_SESSION['teacher_password'] =$row['password'];
+
+
+
+
+
+     }
      // Add more columns as needed
-     $_SESSION['user_column1'] = $row['column1'];
-     $_SESSION['user_column2'] = $row['column2'];
-     //...
+    
      
      header('location:home.php');
    }else{

@@ -1,4 +1,5 @@
 <?php
+
 if(isset($message)){
    foreach($message as $message){
       echo '
@@ -37,15 +38,13 @@ if(isset($message)){
          if(isset($_SESSION['admin_id'])){
 
                        
-            $select_profile = $conn->prepare("SELECT * FROM `users` WHERE id = ?");
-            $select_profile->execute([$_SESSION['admin_id']]);
-            if($select_profile->rowCount() > 0){
-            $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
+        
+          
          ?>
          <img src="../uploaded_files/<?=  $_SESSION['admin_image']; ?>" alt="">
          <h3><?= 
          $_SESSION['admin_name']?></h3>
-         <?php }?>
+        
          <span>student</span>
         
          <?php if ($_SESSION['admin_usertype'] == 'Admin' ) { ?>
@@ -87,17 +86,12 @@ if(isset($message)){
 
    <div class="profile">
          <?php
-         if(isset($_SESSION['user_id'])){
-            
-            $select_profile = $conn->prepare("SELECT * FROM `users` WHERE id = ?");
-            $select_profile->execute([$_SESSION['user_id']]);
-            if($select_profile->rowCount() > 0){
-               $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
-            }
+         if(isset($_SESSION['admin_id'])){
+       
          ?>
-         <img src="../uploaded_files/<?= $_SESSION['user_image']; ?>" alt="">
-         <h3><?=  $_SESSION['user_name']; ?></h3>
-         <span><?= $_SESSION['user_usertype']?></span>
+         <img src="../uploaded_files/<?= $_SESSION['admin_image']; ?>" alt="">
+         <h3><?=  $_SESSION['admin_name']; ?></h3>
+         <span><?= $_SESSION['admin_usertype']?></span>
          <a href="profile.php" class="btn">view profile</a>
          <?php
             }else{

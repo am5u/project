@@ -1,3 +1,19 @@
+<?php
+session_start();
+if(isset($_GET['get_id'])){$get_id=$_GET['get_id'];}
+
+$conn = mysqli_connect("localhost", "root", "", "course_db");
+
+$sql = "INSERT INTO courses( user_id,playlist_id) VALUES ('".$_SESSION['user_id']."', '$get_id')";
+mysqli_query($conn, $sql);
+
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

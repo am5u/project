@@ -79,7 +79,7 @@ if(isset($_POST['save_list'])){
             $total_videos = $count_videos->rowCount();
 
             $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ? LIMIT 1");
-            $select_tutor->execute([ $playlist_id]);
+            $select_tutor->execute([ $fetch_playlist['tutor_id']]);
             $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);
           if(isset($_SESSION['user_id'])){
             $select_bookmark = $conn->prepare("SELECT * FROM `bookmark` WHERE user_id = ? AND playlist_id = ?");
