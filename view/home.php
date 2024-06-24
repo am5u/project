@@ -129,8 +129,10 @@ if(isset($_SESSION['user_id'])){
                $course_id = $fetch_course['id'];
 
                $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ?");
-               $select_tutor->execute([$fetch_course['id']]);
+               $select_tutor->execute([$fetch_course['tutor_id']]);
                $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);
+
+              
       ?>
       <div class="box">
          <div class="tutor">

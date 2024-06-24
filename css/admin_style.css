@@ -137,14 +137,14 @@ section{
 .message.form{
    max-width: 1200px;
    margin: 0 auto;
-   background-color:white;
+   background-color:#003C43;
    top: 2rem;
    border-radius: .5rem;
 }
 
 .message span{
    font-size: 2rem;
-   color:#135D66;
+   color:whitesmoke;
 }
 
 .message i{
@@ -293,7 +293,7 @@ section{
    top: 0; left: 0;
    height: 100vh;
    width: 30rem;
-   background-color: whitesmoke;
+   background:linear-gradient(135D66,white);
    border-right: #135D66;
    z-index: 1200;
 }

@@ -35,7 +35,7 @@ border-radius: 5px;padding: 10px 30px;color: black;
     
 </style>
 <br>
-<h1>أداره نـــــظــــــــام الطــــــــلاب</h1>
+<!-- <h1>أداره نـــــظــــــــام الطــــــــلاب</h1> -->
 	<center>
     <div class="img1">
      <img src="logo/school.png"></div>

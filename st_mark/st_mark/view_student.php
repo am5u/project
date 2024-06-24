@@ -30,22 +30,20 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] == '')
         <table class="table table-responsive table-lg table-md table-sm  table-hover   table-bordered">
          <thead>
 		 <tr>
-		      <th>#</th>
-               <th>رقم المدرسي</th>
-               <th>الصوره</th>
-                <th>لصف</th>
-			   <th>الاسم الاول</th>
-			   <th>الاسم الاخير</th>
-                <th>رقم الموبايل</th>
-			   <th>الماده الاولى</th>
-               <th>الماده الثانية</th>
-			   <th>الماده الثالثة</th>
-               <th>الماده الرابعة</th>
-			   <th>النسبة</th>
-			   <th>النتيجة</th>
+		      
+		 <th>#</th>
+               <th>Id </th>
+			   <!-- <th>الاسم الاول</th> -->
+			   <th> Username</th>
+			   <th>Assigment</th>
+               <th>Quiz</th>
+			   <th>Attendence</th>
+               <th>My courses</th>
+			   <th>Percantge</th>
+			   <th>Result</th>
              
-               <th>تعديل</th>
-               <th>حذف</th>
+               <th>Edit</th>
+               <th>Delete</th>
             </tr>
 			</thead>
 						<?php
@@ -68,9 +66,9 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] == '')
 				$fourth_grading = $row['fourth_grading'];
 				$final_grade = ($first_grading + $second_grading + $third_grading + $fourth_grading) / 4;
 				if($final_grade>=75){
-					$remarks = "ناجح";	
+					$remarks = "Sucsses";	
 				} else {
-					$remarks = "راسب";
+					$remarks = "Fail";
 				}
 				$picture = $row['picture'];
 

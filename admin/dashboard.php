@@ -33,6 +33,10 @@ $total_comments = $select_comments->rowCount();
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="../css/admin_style.css">
+   <link rel="stylesheet" href="../project/css/admin_style.css">
+    
+   
+
 
 </head>
 <body>
@@ -51,29 +55,13 @@ $total_comments = $select_comments->rowCount();
          <a href="profile.php" class="btn">view profile</a>
       </div>
 
-      <div class="box">
-         <h3><?= $total_contents; ?></h3>
-         <p>total contents</p>
-         <a href="add_content.php" class="btn">add new content</a>
-      </div>
 
-      <div class="box">
-         <h3><?= $total_playlists; ?></h3>
-         <p>total playlists</p>
-         <a href="add_playlist.php" class="btn">add new playlist</a>
-      </div>
 
-      <div class="box">
-         <h3><?= $total_likes; ?></h3>
-         <p>total likes</p>
-         <a href="contents.php" class="btn">view contents</a>
-      </div>
+ 
 
-      <div class="box">
-         <h3><?= $total_comments; ?></h3>
-         <p>total comments</p>
-         <a href="comments.php" class="btn">view comments</a>
-      </div>
+
+
+
 
       <!-- <div class="box">
          <h3>quick select</h3>
@@ -84,9 +72,9 @@ $total_comments = $select_comments->rowCount();
          </div>
       </div> -->
       <div class="box">
-         <h3>Manage Students</h3>
+         <h3>Manage Teachers </h3>
          <p>Add,Delete,Remove </p>
-         <a href="mang_accounts.php" class="btn">view Manage</a>
+         <a href="../st_mark/st_mark/mang_accounts.php" class="btn">view Manage</a>
       </div>
 
    </div>

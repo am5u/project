@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>صقحه تسجيل الدخول</title>
+    <!-- <title>صقحه تسجيل الدخول</title> -->
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/login.css"/>
 </head>
@@ -32,8 +32,8 @@ require_once './conn/conn.php';
             echo 
             
             "<div class='form alert alert-info'>
-                  <h3>الاسم اوكلمه المرور غير صحيحه</h3><br/>
-                  <p class='link'>اضغط هنا <a href='st_login.php'>سجل مره اخرى</a> </p>
+                  <h>Username or password is wrong</h3><br/>
+                  <p class='link'>Submit <a href='st_login.php'>Try Again</a> </p>
                   </div>";
         }
     } else {
@@ -43,21 +43,21 @@ require_once './conn/conn.php';
 <main class="form-signin">
   <form class="form" method="post" name="login">
     <img class="mb-4" src="admin.png" alt="" width="100" height="100">
-    <h1 class="h3 mb-3 fw-normal">سجل دخولك</h1>
+    <h1 class="h3 mb-3 fw-normal">Enter your name </h1>
 
     <div class="form-floating">
       <input type="text" class="form-control" name="username" placeholder="ادخل الاسم">
-      <label for="floatingInput" required>ادخل الاسم</label>
+      <label for="floatingInput" required>Username </label>
     </div>
     
     <div class="form-floating">
       <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="ادخل كلمه المرور">
-      <label for="floatingPassword" required>كمله المرور</label>
+      <label for="floatingPassword" required>Password </label>
     </div>
 
     <button class="w-100 btn btn-lg btn-primary"  name="submit" type="submit">سجل الان</button>
 
-       <p class="link">لاامتلك حساب؟ <a href="registration.php">تسجيل عضو جديد</a>
+       <p class="link"> Dont have an account? <a href="registration.php">  </a>
     <p class="mt-5 mb-3 text-muted"></p>
   </form>
 

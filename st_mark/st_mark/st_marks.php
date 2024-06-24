@@ -19,7 +19,7 @@ require_once './conn/conn.php';
                
 <!--						<input type="submit"  value="Search Student">-->
 					</td>
-				</tr>
+				</tr> 
 			
 			</table>
 		</form>
@@ -34,13 +34,13 @@ require_once './conn/conn.php';
 					?>
 					<center>
 					<form action="" method="post">&nbsp;&nbsp;
-                        <b>ادخل الرقم المدرسي</b>&nbsp;&nbsp;
+                        <b>Course Id  </b>&nbsp;&nbsp;
                         <input type="text" name="roll_no">
                           <button class="w-20 btn btn-lg btn-primary" name="search_by_roll_no_for_search"type="submit">ابحث الان</button>
 				
 					</form>
                         <br><br>
-					<h4><b><u>نتيجه الطالب</u></b></h4><br><br>
+					<h4><b><u>Students result </u></b></h4><br><br>
 					</center>
 					<?php
 				}
@@ -57,9 +57,9 @@ require_once './conn/conn.php';
                             <thead>
 		 <tr>
 		      <th>#</th>
-               <th>رقم المدرسي</th>
-			   <th>الاسم الاول</th>
-			   <th>الاسم الاخير</th>
+               <th>Id </th>
+			   <!-- <th>الاسم الاول</th> -->
+			   <th> Username</th>
 			   <th>Assigment</th>
                <th>Quiz</th>
 			   <th>Attendence</th>
@@ -83,18 +83,18 @@ require_once './conn/conn.php';
 				 + $third_mark + $fourth_mark) / 4;
         
 				if(($final_mark >=90) &&($final_mark <=100)){
-					$remarks = "ممتاز";	
+					$remarks = "Excellent";	
 				}
                 elseif(($final_mark >=70) &&($final_mark <=80)){
-					$remarks = "جيد جدا";
+					$remarks = "Very Good ";
                 }
                  elseif (($final_mark >=60) &&($final_mark <=70)){
-					$remarks = "جيد";	
+					$remarks = "Good";	
 				}
                     elseif(($final_mark >=50) &&($final_mark <=60)){
-					$remarks = "مقبول";	
+					$remarks = "Acceptable";	
                     }else {
-					$remarks = "راسب";
+					$remarks = "Fail";
 				}        
                      ?>
                             <tr>
