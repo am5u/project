@@ -49,10 +49,14 @@ if(isset($message)){
         
          <?php if ($_SESSION['user_usertype'] == 'tutor' ) { ?>
             <a href="../teacher/dashboard.php" class="btn">view profile</a>
-            <?php }else { ?>
-           
-               <a href="profile.php" class="btn">view profile</a>
-                     <?php }  ?>
+            <?php }elseif ($_SESSION['user_usertype'] == 'Admin') { ?>
+                      
+               <a href="../admin/dashboard.php" class="btn">view profile</a>
+                     <?php } else {?>  
+                        <a href="../student/dashboard.php" class="btn">view profile</a>
+
+                        
+                        <?php } ?>  
               <div class="flex-btn">
 
                  <a href="../components/user_logout.php" onclick="return confirm('logout from this website?');" class="delete-btn">logout</a>

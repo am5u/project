@@ -157,7 +157,6 @@ if(isset($_POST['submit'])){
 
 
 <section class="form-container">
-<?php include '../components/user_header.php'; ?>
 
 <div class="login-box"data-aos="flip-left">
         <h2>Login</h2>

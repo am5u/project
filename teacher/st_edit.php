@@ -15,11 +15,7 @@ while($row = mysqli_fetch_array($result)){
    $id= $row['id'];
 	$name = $row['name']; 
 	$email = $row['email']; 
-<<<<<<< HEAD
    $image = $row['image'];
-=======
-   
->>>>>>> b9df638a7032794e58e32c680001589400898f57
    
 }
 $info_sql = "SELECT * FROM info_student WHERE teacher_number='".$_SESSION['user_id']."' AND email= '$email'";
@@ -68,17 +64,10 @@ if(!empty($_POST['name']))
 	$upthird = $_POST['third']; 
 	$upfourth = $_POST['fourth']; 
 	
-<<<<<<< HEAD
 	$query = "INSERT INTO info_student (teacher_number,name, email,picture,Quiz, Assigment, Course, Attendence) 
 	           VALUES ('".$_SESSION['teacher_id']."','$name', '$email','$image', '$upfirst', '$upsecond', '$upthird', '$upfourth') 
 	           ON DUPLICATE KEY UPDATE 
 	           Quiz='$upfirst', Assigment='$upsecond', Course='$upthird', Attendence='$upfourth',picture='$image' ";
-=======
-	$query = "INSERT INTO info_student (teacher_number,name, email, Quiz, Assigment, Course, Attendence) 
-	           VALUES ('".$_SESSION['user_id']."','$name', '$email', '$upfirst', '$upsecond', '$upthird', '$upfourth') 
-	           ON DUPLICATE KEY UPDATE 
-	           Quiz='$upfirst', Assigment='$upsecond', Course='$upthird', Attendence='$upfourth'";
->>>>>>> b9df638a7032794e58e32c680001589400898f57
               
 	
 	if(mysqli_query($conn,$query))

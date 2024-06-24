@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2024 at 02:09 PM
+-- Generation Time: Jun 24, 2024 at 04:29 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -55,14 +55,6 @@ CREATE TABLE `bookmark` (
   `playlist_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `bookmark`
---
-
-INSERT INTO `bookmark` (`id`, `user_id`, `playlist_id`) VALUES
-(2, 3, 7),
-(3, 7, 6);
-
 -- --------------------------------------------------------
 
 --
@@ -86,7 +78,8 @@ CREATE TABLE `cards` (
 INSERT INTO `cards` (`id`, `user_id`, `numcard`, `cardholder`, `cvv`, `Exmonth`, `Exyear`) VALUES
 (1, 3, 2147483647, 'ammar mohamed', 2323, 9, 2023),
 (2, 5, 324342334, 'ammar mohamed', 3443, 9, 2026),
-(3, 3, 2147483647, 'Yasser', 3443, 10, 2028);
+(3, 3, 2147483647, 'Yasser', 3443, 10, 2028),
+(4, 8, 2147483647, 'amr ramdan', 123, 2, 2023);
 
 -- --------------------------------------------------------
 
@@ -102,13 +95,6 @@ CREATE TABLE `comments` (
   `comment` varchar(1000) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`id`, `content_id`, `user_id`, `tutor_id`, `comment`, `date`) VALUES
-(1, '1', 5, 2, 'sfmakfdskaf', '2024-06-23');
 
 -- --------------------------------------------------------
 
@@ -141,14 +127,6 @@ CREATE TABLE `content` (
   `status` varchar(20) NOT NULL DEFAULT 'deactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `content`
---
-
-INSERT INTO `content` (`id`, `tutor_id`, `playlist_id`, `title`, `description`, `video`, `thumb`, `date`, `status`) VALUES
-(1, 2, 6, 'video 1', 'MS SQL Server For Beginners _Introduction ', '01.00 - _ MS SQL Server For Beginners _Introduction _.mp4', 'Screenshot 2024-06-23 035951.png', '2024-06-23', 'active'),
-(2, 2, 7, 'video 1 for C++', 'intro', '02 - C   Data Structures _  .mp4', 'Screenshot 2024-05-09 141324.png', '2024-06-23', 'active');
-
 -- --------------------------------------------------------
 
 --
@@ -160,16 +138,6 @@ CREATE TABLE `courses` (
   `user_id` int(11) NOT NULL,
   `playlist_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `courses`
---
-
-INSERT INTO `courses` (`id`, `user_id`, `playlist_id`) VALUES
-(1, 3, 6),
-(2, 5, 6),
-(3, 3, 7),
-(4, 7, 6);
 
 -- --------------------------------------------------------
 
@@ -203,14 +171,6 @@ CREATE TABLE `likes` (
   `content_id` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `likes`
---
-
-INSERT INTO `likes` (`id`, `user_id`, `tutor_id`, `content_id`) VALUES
-(1, 5, 2, '1'),
-(2, 7, 2, '1');
-
 -- --------------------------------------------------------
 
 --
@@ -224,16 +184,9 @@ CREATE TABLE `playlist` (
   `description` varchar(1000) NOT NULL,
   `thumb` varchar(100) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
-  `status` varchar(20) NOT NULL DEFAULT 'deactive'
+  `status` varchar(20) NOT NULL DEFAULT 'deactive',
+  `level` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `playlist`
---
-
-INSERT INTO `playlist` (`id`, `tutor_id`, `title`, `description`, `thumb`, `date`, `status`) VALUES
-(6, 2, 'Basics for data base', 'Intro for database  by Sql ', 'Screenshot 2024-06-23 035951.png', '2024-06-23', 'active'),
-(7, 2, 'C++', 'Basics for C++', 'Screenshot 2024-06-23 035951.png', '2024-06-23', 'active');
 
 -- --------------------------------------------------------
 
@@ -248,6 +201,13 @@ CREATE TABLE `students` (
   `password` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `name`, `email`, `password`, `image`) VALUES
+(4, 'kklnlk', 'amr@gmail.com', '20', 'omarmohamed.JPG');
 
 -- --------------------------------------------------------
 
@@ -269,8 +229,7 @@ CREATE TABLE `tutors` (
 --
 
 INSERT INTO `tutors` (`id`, `name`, `profession`, `email`, `password`, `image`) VALUES
-(1, 'menna', 'musician', 'mennayasser@gmail.com', '1234', 'pic-2.jpg'),
-(2, 'mohamed', 'developer', 'mohamed@gmail.com', '1234', 'unnamed.jpg');
+(3, ' mohamed', 'devolper', 'mohamed@gmail.com 	', '1234 ', 'unnamed.jpg');
 
 -- --------------------------------------------------------
 
@@ -293,9 +252,17 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `image`, `usertype`) VALUES
 (1, 'admin', 'admin@gmail.com', 'admin\r\n', 'nagib.jpg', 'Admin'),
-(2, 'menna', 'mennayasser@gmail.com', '1234', 'pic-2.jpg', 'tutor'),
+(2, 'menna', 'mennayasser@gmail.com', '40', 'Welcome-Android-Users.png', 'tutor'),
 (3, 'mohamed', 'mohamed@gmail.com', '1234', 'unnamed.jpg', 'tutor'),
-(7, 'ammar', 'ammareldesouki130@gmail.com', '123', 'mohand.JPG', 'student');
+(7, 'ammar', 'ammareldesouki130@gmail.com', '123', 'mohand.JPG', 'student'),
+(8, 'amr', 'amr@gmail.com', '20', 'omarmohamed.JPG', 'Student'),
+(9, 'Menna', 'mennayasser@gmail.com', '1234', 'heba.PNG', 'student'),
+(10, 'skfjsdlfas', 'Ali33@fmail.com', '123456', '', 'Student'),
+(11, 'ammar', 'amrramdan@gmail.com', '1', 'course_db.jpg', 'Student'),
+(12, 'assasddsfda', 'sdfsdfsd@gma', '1234', '2024_04_15_00_26_IMG_5565.JPG', 'Student'),
+(13, 'J=fdsfsdnfds', 'gehad@gmail.com', '1234', 'seif.JPG', 'Student'),
+(14, 'yasser', 'yassin@gmail.com', '1234', 'WhatsApp-Image-2021-09-08-at-14.25.07-1-1000x400.jpeg', 'student'),
+(15, 'kklnlk', 'amr@gmail.com', '20', 'omarmohamed.JPG', 'student');
 
 --
 -- Indexes for dumped tables
@@ -400,13 +367,13 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `bookmark`
 --
 ALTER TABLE `bookmark`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cards`
 --
 ALTER TABLE `cards`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -424,13 +391,13 @@ ALTER TABLE `content`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `info_student`
 --
 ALTER TABLE `info_student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `likes`
@@ -442,25 +409,25 @@ ALTER TABLE `likes`
 -- AUTO_INCREMENT for table `playlist`
 --
 ALTER TABLE `playlist`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tutors`
 --
 ALTER TABLE `tutors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
@@ -517,7 +484,7 @@ ALTER TABLE `likes`
 -- Constraints for table `playlist`
 --
 ALTER TABLE `playlist`
-  ADD CONSTRAINT `playlistwith tutor` FOREIGN KEY (`tutor_id`) REFERENCES `tutors` (`id`);
+  ADD CONSTRAINT `playlistwith tutor` FOREIGN KEY (`tutor_id`) REFERENCES `tutors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
