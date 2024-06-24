@@ -3,15 +3,15 @@
 include '../components/connect.php';
 session_start();
 $select_contents = $conn->prepare("SELECT * FROM `content` WHERE id = ?");
-$select_contents->execute([$_SESSION['admin_id']]);
+$select_contents->execute([$_SESSION['teacher_id']]);
 $total_contents = $select_contents->rowCount();
 
 $select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE id = ?");
-$select_playlists->execute([$_SESSION['admin_id']]);
+$select_playlists->execute([$_SESSION['teacher_id']]);
 $total_playlists = $select_playlists->rowCount();
 
 $select_likes = $conn->prepare("SELECT * FROM `likes` WHERE id = ?");
-$select_likes->execute([$_SESSION['admin_id']]);
+$select_likes->execute([$_SESSION['teacher_id']]);
 $total_likes = $select_likes->rowCount();
 
 $select_comments = $conn->prepare("SELECT * FROM `comments` WHERE id = ?");

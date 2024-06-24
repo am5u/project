@@ -1,9 +1,9 @@
 <?php
 
 include '../components/connect.php';
-
-if(isset($_COOKIE['user_id'])){
-   $user_id = $_COOKIE['user_id'];
+session_start();
+if(isset($_SESSION['user_id'])){
+  $user_id = $_SESSION['user_id'];
 }else{
    $user_id = '';
    header('location:login.php');
@@ -15,20 +15,20 @@ if(isset($_POST['submit'])){
    $select_user->execute([$user_id]);
    $fetch_user = $select_user->fetch(PDO::FETCH_ASSOC);
 
-   $prev_pass = $fetch_user['password'];
-   $prev_image = $fetch_user['image'];
+   $prev_pass = $_SESSION['user_password'];
+   $prev_image = $_SESSION['user_image'];
 
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
 
   if(!empty($name)){
    $update_name = $conn->prepare("UPDATE `users` SET name = ? WHERE id = ?");
    $update_name->execute([$name, $user_id]);
    $message[] = 'username updated successfully!';
+   if(   $update_name->execute([$name, $user_id]) ){$_SESSION['user_name']=$name;}
+   
   }
 
    $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
 
    if(!empty($email)){
       $select_email = $conn->prepare("SELECT email FROM `users` WHERE email = ?");
@@ -39,38 +39,33 @@ if(isset($_POST['submit'])){
          $update_email = $conn->prepare("UPDATE `users` SET email = ? WHERE id = ?");
          $update_email->execute([$email, $user_id]);
          $message[] = 'email updated successfully!';
+         if(   $update_email->execute([$email, $user_id]) ){$_SESSION['user_email']=$email;}
+
       }
    }
 
    $image = $_FILES['image']['name'];
    $image = filter_var($image, FILTER_SANITIZE_STRING);
    $ext = pathinfo($image, PATHINFO_EXTENSION);
-   $rename = unique_id().'.'.$ext;
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
-   $image_folder = 'uploaded_files/'.$rename;
+   $image_folder = '../uploaded_files/'.$image;
 
    if(!empty($image)){
-      if($image_size > 2000000){
-         $message[] = 'image size too large!';
-      }else{
+    
+      
          $update_image = $conn->prepare("UPDATE `users` SET `image` = ? WHERE id = ?");
-         $update_image->execute([$rename, $user_id]);
+         $update_image->execute([$image, $user_id]);
          move_uploaded_file($image_tmp_name, $image_folder);
-         if($prev_image != '' AND $prev_image != $rename){
-            unlink('uploaded_files/'.$prev_image);
-         }
+      
          $message[] = 'image updated successfully!';
-      }
+      
    }
 
    $empty_pass = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
-   $old_pass = sha1($_POST['old_pass']);
-   $old_pass = filter_var($old_pass, FILTER_SANITIZE_STRING);
-   $new_pass = sha1($_POST['new_pass']);
-   $new_pass = filter_var($new_pass, FILTER_SANITIZE_STRING);
-   $cpass = sha1($_POST['cpass']);
-   $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
+   $old_pass = ($_POST['old_pass']);
+   $new_pass = ($_POST['new_pass']);
+   $cpass = ($_POST['cpass']);
 
    if($old_pass != $empty_pass){
       if($old_pass != $prev_pass){
@@ -118,9 +113,9 @@ if(isset($_POST['submit'])){
       <div class="flex">
          <div class="col">
             <p>your name</p>
-            <input type="text" name="name" placeholder="<?= $fetch_profile['name']; ?>" maxlength="100" class="box">
+            <input type="text" name="name" placeholder="<?= $_SESSION['user_name']; ?>" maxlength="100" class="box">
             <p>your email</p>
-            <input type="email" name="email" placeholder="<?= $fetch_profile['email']; ?>" maxlength="100" class="box">
+            <input type="email" name="email" placeholder="<?= $_SESSION['user_email']; ?>" maxlength="100" class="box">
             <p>update pic</p>
             <input type="file" name="image" accept="image/*" class="box">
          </div>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-----------------css files-------------------->
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="./CSS/all.min.css">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <title>Coding Heros</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+        <title>Category Filter in JS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./CSS/main1.css">
+        <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+               
+   <!-------------------
+      Start Navbar
+   -------------------->
+<header>
+    <nav id="navbar" class="navbar  sticky-top navbar-expand-lg ">
+       <div class="container-fluid">
+       <a class="navbar-brand" href="">
+          <img src="./images/codingheros1.png" alt="">
+       </a>
+       <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto p-3 mb-2 mb-lg-0">
+             <li class="nav-item">
+                <a class="nav-link active " aria-current="page" href="#">Home</a>
+             </li>
+             <li class="nav-item dropdown">
+                 <a class="nav-link  dropdown-toggle" href="" id="navbarDropdown" role="link"  aria-expanded="false">
+                     Courses
+                 </a>
+                 <ul class="dropdown-menu ">
+                     <li><a class="dropdown-item" href="">Kids</a></li>
+                     <li><a class="dropdown-item" href="">Juniors</a></li>
+                     <li><a class="dropdown-item" href="">Teens</a></li>
+                 </ul>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link " href="">About Us</a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link " href="">Contact Us</a>
+             </li>
+          
+          </ul>
+          
+       </div>
+       </div>
+    </nav>
+ </header>
+     <!-------------------
+         End Navbar
+     --------------------->
+        
+        <div class = "main-container">
+            <h2>start your free trail</h2>
+            <p>with this varaities of programming languages choose yours to learn now !</p>
+            <div class = "filter-container">
+                <div class = "category-head">
+                    <ul>
+                        <!-- <div class = "category-title active" id = "all">
+                            <li>All</li>
+                            <span><i class = "fas fa-border-all"></i></span>
+                        </div> -->
+                        <!-- <div class = "category-title" id = "culture">
+                            <li>Culture</li>
+                            <span><i class = "fas fa-theater-masks"></i></span>
+                        </div> -->
+                        <!-- <div class = "category-title" id = "politics">
+                            <li>Politics</li>
+                            <span><i class = "fas fa-landmark"></i></span>
+                        </div> -->
+                        <!-- <div class = "category-title" id = "finance">
+                            <li>Finance</li>
+                            <span><i class = "fas fa-chart-area"></i></span>
+                        </div> -->
+                        <!-- <div class = "category-title" id = "business">
+                            <li>Business</li>
+                            <span><i class = "fas fa-coins"></i></span>
+                        </div> -->
+                        <!-- <div class = "category-title" id = "sports">
+                            <li>Sports</li>
+                            <span><i class = "fas fa-running"></i></span>
+                        </div> -->
+                    </ul>
+                </div>
+
+                <div class = "posts-collect">
+                    <div class = "posts-main-container">
+                        <!-- single post -->
+                        <div class = "all business">
+                            <div class = "post-img">
+                                <video id="myVideo"  loop muted autoplay >
+                                    <source src="./images/videoplayback (1).mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <span class = "category-name">Html</span>
+                            </div>
+
+                            <div class = "post-content">
+                                <div class = "post-content-top">
+                                    <!-- <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span> -->
+                                </div>
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <!-- <button type = "button" class = "read-btn">Read All</button> -->
+                        </div>
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <div class = "all business">
+                            <div class = "post-img">
+                                <video id="myVideo"  loop muted autoplay >
+                                    <source src="./images/videoplayback (1).mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <span class = "category-name">Business</span>
+                            </div>
+
+                            <div class = "post-content">
+                                <!-- <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div> -->
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <!-- <button type = "button" class = "read-btn">Read All</button> -->
+                        </div>
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <div class = "all business">
+                            <div class = "post-img">
+                                <video id="myVideo"  loop muted autoplay >
+                                    <source src="./images/videoplayback (1).mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <span class = "category-name">Css</span>
+                            </div>
+
+                            <div class = "post-content">
+                                <!-- <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div> -->
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <!-- <button type = "button" class = "read-btn">Read All</button> -->
+                        </div>
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <div class = "all culture">
+                            <div class = "post-img">
+                                <video id="myVideo"  loop muted autoplay >
+                                    <source src="./images/videoplayback (1).mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <span class = "category-name">Java Script</span>
+                            </div>
+
+                            <div class = "post-content">
+                                <!-- <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div> -->
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <!-- <button type = "button" class = "read-btn">Read All</button> -->
+                        </div>
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <div class = "all culture">
+                            <div class = "post-img">
+                                <video id="myVideo"  loop muted autoplay >
+                                    <source src="./images/videoplayback (1).mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <span class = "category-name">Paython</span>
+                            </div>
+
+                            <div class = "post-content">
+                                <!-- <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div> -->
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <!-- <button type = "button" class = "read-btn">Read All</button> -->
+                        </div>
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <div class = "all culture">
+                            <div class = "post-img">
+                                <video id="myVideo"  loop muted autoplay >
+                                    <source src="./images/videoplayback (1).mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <span class = "category-name">scratch</span>
+                            </div>
+
+                            <div class = "post-content">
+                                <!-- <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div> -->
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <!-- <button type = "button" class = "read-btn">Read All</button> -->
+                        </div>
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <!-- <div class = "all culture">
+                            <div class = "post-img">
+                                <img src = "images/culture-4.jpg" alt = "post">
+                                <span class = "category-name">culture</span>
+                            </div>
+
+                            <div class = "post-content">
+                                <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div>
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <button type = "button" class = "read-btn">Read All</button>
+                        </div>
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <!-- <div class = "all finance">
+                            <div class = "post-img">
+                                <img src = "images/finance-1.jpg" alt = "post">
+                                <span class = "category-name">finance</span>
+                            </div>
+
+                            <div class = "post-content">
+                                <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div>
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <button type = "button" class = "read-btn">Read All</button>
+                        </div> -->
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <!-- <div class = "all finance"> -->
+                            <!-- <div class = "post-img">
+                                <img src = "images/finance-2.jpg" alt = "post">
+                                <span class = "category-name">finance</span>
+                            </div>
+
+                            <div class = "post-content">
+                                <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div>
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <button type = "button" class = "read-btn">Read All</button>
+                        </div> -->
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <!-- <div class = "all finance">
+                            <div class = "post-img">
+                                <img src = "images/finance-3.jpg" alt = "post">
+                                <span class = "category-name">finance</span>
+                            </div>
+
+                            <div class = "post-content">
+                                <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div>
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <button type = "button" class = "read-btn">Read All</button>
+                        </div> -->
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <!-- <div class = "all politics">
+                            <div class = "post-img">
+                                <img src = "images/politics-1.jpg" alt = "post">
+                                <span class = "category-name">politics</span>
+                            </div> -->
+
+                            <!-- <div class = "post-content">
+                                <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div>
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <button type = "button" class = "read-btn">Read All</button>
+                        </div> -->
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <!-- <div class = "all politics">
+                            <div class = "post-img">
+                                <img src = "images/politics-2.jpg" alt = "post">
+                                <span class = "category-name">politics</span>
+                            </div> -->
+
+                            <!-- <div class = "post-content">
+                                <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div>
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <button type = "button" class = "read-btn">Read All</button>
+                        </div> -->
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <!-- <div class = "all politics">
+                            <div class = "post-img">
+                                <img src = "images/politics-3.jpg" alt = "post">
+                                <span class = "category-name">politics</span>
+                            </div> -->
+
+                            <!-- <div class = "post-content">
+                                <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div>
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <button type = "button" class = "read-btn">Read All</button>
+                        </div> -->
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <!-- <div class = "all politics">
+                            <div class = "post-img">
+                                <img src = "images/politics-4.jpg" alt = "post">
+                                <span class = "category-name">politics</span>
+                            </div> -->
+
+                            <!-- <div class = "post-content">
+                                <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div>
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <button type = "button" class = "read-btn">Read All</button>
+                        </div> -->
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <!-- <div class = "all sports">
+                            <div class = "post-img">
+                                <img src = "images/sports-1.jpg" alt = "post">
+                                <span class = "category-name">sports</span>
+                            </div> -->
+
+                            <!-- <div class = "post-content">
+                                <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div>
+                                <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <button type = "button" class = "read-btn">Read All</button>
+                        </div> -->
+                        <!-- end of single post -->
+                        <!-- single post -->
+                        <!-- <div class = "all sports">
+                            <div class = "post-img">
+                                <img src = "images/sports-2.jpg" alt = "post">
+                                <span class = "category-name">sports</span>
+                            </div> -->
+
+                            <!-- <div class = "post-content">
+                                <div class = "post-content-top">
+                                    <span><i class = "fas fa-calendar"></i>January 01, 2XXX</span>
+                                    <span>
+                                        <i class = "fas fa-comment"></i>34
+                                    </span>
+                                </div> --> 
+                                <!-- <h2>Lorem ipsum dolor sit amet</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus recusandae aspernatur possimus illum, repellat ad quasi earum, illo voluptatibus minima fugiat saepe magni corporis vero eius accusantium quidem, consectetur nesciunt!</p>
+                            </div>
+                            <button type = "button" class = "read-btn">Read All</button>
+                        </div> -->
+                        <!-- end of single post -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <!---------------------
+        Start Footer section
+    ---------------------->
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+            <div class="img">
+                <img src="./images/photo_2024-06-22_23-57-47.jpg" alt="photo is not available" class="img">
+                        </div>
+            <!-- <h3>Coding<span>Heros</span></h3> -->
+
+            <p class="footer-links">
+                <a href="#">Home</a>
+                |
+                <a href="#">About</a>
+                |
+                <a href="#">Contact</a>
+                |
+                <a href="#">free trail</a>
+            </p>
+
+            <p class="footer-company-name">Copyright © 2024 <strong>coding Heros</strong> All rights reserved</p>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Egypt</span>
+                    Greek Camps</p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+20 01142309475</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:sagar00001.co@gmail.com">codingheros@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About coding heros</span>
+                <strong>coding heros</strong> is a programming website aims to separate coding knowledge in the future generatitions
+               
+            </p>
+            <div class="footer-icons">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+               
+            </div>
+        </div>
+
+    </footer>
+    <!---------------------
+        end Footer section
+    ---------------------->
+        <!-- JS file -->
+        <script src = "./JS/script1.js"></script>
+    </body>
+</html>

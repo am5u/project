@@ -25,6 +25,7 @@ if(isset($_POST['submit'])){
      $_SESSION['user_email'] = $row['email'];
      $_SESSION['user_image'] = $row['image'];
      $_SESSION['user_usertype'] = $row['usertype'];
+     $_SESSION['user_password'] = $row['password'];
 
      if($_SESSION['user_usertype']=='tutor'){
 

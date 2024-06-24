@@ -2,12 +2,6 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['user_id'])){
-   $user_id = $_COOKIE['user_id'];
-   $_SESSION['user_id'] = $user_id; // set session variable
-} else {
-   $user_id = '';
-}
 
 session_start();
 
@@ -33,21 +27,18 @@ session_start();
 <?php include '../components/user_header.php'; ?>
 
 <!-- courses section starts  -->
- 
+
 <section class="courses">
 
-   <h1 class="heading">all courses</h1>
+   <h1 class="heading">Softskills courses</h1>
 
    <div class="box-container">
 
       <?php
-       if(isset($_SESSION['user_id'])) {
-          $select_subscription = $conn->prepare("SELECT * FROM `courses` WHERE user_id = ?");
-          $select_subscription->execute([$_SESSION['user_id']]);
-          if($select_subscription->rowCount() > 0) {
-             while($fetch_subscribtion = $select_subscription->fetch(PDO::FETCH_ASSOC)){
-                $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE id= ? AND status = ? ORDER BY date DESC");
-                $select_courses->execute([$fetch_subscribtion['playlist_id'], 'active']);
+     
+    
+                $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE level= 'soft skils' AND status = ? ORDER BY date DESC");
+                $select_courses->execute(['active']);
                 if($select_courses->rowCount() > 0) {
                    while($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)){
                       $course_id = $fetch_course['id'];
@@ -72,13 +63,9 @@ session_start();
                 } else {
                    echo '<p class="empty">no courses added yet!</p>';
                 }
-             }
-          } else {
-             echo '<p class="empty">no courses added yet!</p>';
-          }
-       } else {
-          echo '<p class="empty">please login to view your courses!</p>';
-       }
+             
+        
+       
       ?>
 
    </div>

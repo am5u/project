@@ -1,0 +1,438 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+img{width: 100%}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to left, #E3FEF7, #77B0AA, #135D66, #003C43);
+    line-height: 1.5;
+}
+.posts-main-container > div{
+    background: white;
+}
+/*******************
+Start Navbar
+*******************/
+
+/************** navbar ******************/
+.navbar.transparent {
+    background-color: transparent;
+}
+.navbar.black {
+    background-color: black; /* Change this to your desired color */
+}
+
+.navbar{
+    padding: 0;
+    min-height: 75px;
+    background-color: transparent;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    top: 0;
+}
+.navbar-brand img{
+    display: block;
+    width: 100px;
+   height: 90px;
+}
+.navbar a{
+    color: black;
+}
+.navbar-scrolled{
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+.dropdown:hover .dropdown-menu{
+    display: block;
+    margin-top: 0;
+}
+/**/
+.navbar-toggler{
+    background-color: var(--span1-color-);
+}
+.navbar-collapse{
+    
+    text-align:end;
+}
+.collapse .navbar-collapse{
+    background-color:white;
+
+}
+
+.navbar-toggler .icon{
+    color: black;
+}
+.navbar .navbar-nav .nav-link {
+    color: black;
+    padding: 7px 3px 7px 10px;
+    font-size: 18px;
+    font-weight: 400;
+    margin-left: 20px
+
+}
+.navbar .navbar-nav .nav-link.active,
+.navbar .navbar-nav .nav-link.focus,
+.navbar .navbar-nav .nav-link:hover,
+.navbar-brand{
+    color:var(--span1-color-);
+}
+
+.dropdown-menu{
+    background-color: white;
+}
+
+.dropdown-item{
+    color: white;
+}
+.dropdown-item:hover{
+    color: var(--span1-color-);
+}
+
+/*******************
+End Navbar
+*******************/
+/****************/
+.main-container{
+    width: 90vw;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+.main-container > h2{
+    text-align: center;
+    padding: 10px 0;
+    font-size: 32px;
+    color: white;
+}
+.main-container > p{
+    font-weight: 300;
+    padding: 10px 0;
+    opacity: 0.7;
+    text-align: center;
+    color: white;
+}
+.category-head{
+    margin: 30px 0;
+}
+.category-head ul{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.category-title{
+    flex: 0 0 calc(16.6667% - 10px);
+    display: flex;
+    justify-content:center;
+    background: #a8a8a8;
+    padding: 12px;
+    color: #fff;
+    margin: 5px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.category-title:hover{
+    opacity: 0.7;
+}
+.category-title li{
+    padding: 0 10px;
+}
+.category-title span{
+    color: #003C43;
+}
+
+/** single post **/
+.posts-main-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+}
+.posts-main-container > div{
+    box-shadow: 0px 8px 22px -12px rgba(0, 0, 0, 0.64);
+}
+.post-img{
+    position: relative;
+}
+.category-name{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #fff;
+    background-color: #003C43;
+    padding: 4px 10px;
+    border-radius: 2px;
+}
+.business .category-name{
+    background: #003C43;
+}
+.culture .category-name{
+    background: #003C43;
+}
+.politics .category-name{
+    background: #003C43;
+}
+.finance .category-name{
+    background: #2c2a4a;
+}
+.sports .category-name{
+    background: #a1e44d;
+}
+
+
+.post-content{
+    padding: 25px;
+}
+.post-content-top{
+    background: #80ced7;
+    color: #fff;
+    opacity: 0.8;
+    padding: 5px 0 5px 15px;
+}
+.post-content-top .p{
+color: #003C43;
+}
+.post-content-top .h2{
+    color: #003C43;
+    }
+.post-content-top span{
+    padding-right: 20px;
+}
+.post-content-top .fa-comment, .post-content-top .fa-calendar{
+    padding-right: 5px;
+}
+.post-content h2{
+    font-size: 22px;
+    padding: 12px 0;
+    font-weight: 400;
+}
+.post-content p{
+    opacity: 0.7;
+    font-size: 15px;
+    line-height: 1.8;
+}
+.read-btn{
+    border: none;
+    padding: 8px 15px;
+    display: block;
+    margin: 5px auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    border: 1px solid #292929;
+    background: transparent;
+    margin-bottom: 40px;
+}
+
+.read-btn:hover{
+    background: #f6f6f6;
+}
+
+
+
+/***************/
+@media(max-width: 1170px){
+    .posts-main-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media(max-width: 768px){
+    .posts-main-container{
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/***********/
+
+
+/* The footer is fixed to the bottom of the page */
+
+footer {
+    position: fixed;
+    bottom: 0;
+}
+
+@media (max-height:800px) {
+    footer {
+        position: static;
+    }
+    header {
+        padding-top: 40px;
+    }
+}
+
+.footer-distributed {
+    background-color: gainsboro;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font: bold 16px sans-serif;
+    padding: 50px 50px 60px 50px;
+    margin-top: 80px;
+}
+
+.footer-distributed .footer-left, .footer-distributed .footer-center, .footer-distributed .footer-right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left {
+    width: 30%;
+}
+
+.footer-distributed h3 {
+    color: #135D66;
+    font: normal 36px 'Cookie', cursive;
+    margin: 0;
+}
+
+
+.footer-distributed h3 span {
+    color: #135D66;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links {
+    color: #135D66;
+    margin: 20px 0 12px;
+}
+
+.footer-distributed .footer-links a {
+    display: inline-block;
+    line-height: 1.8;
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-distributed .footer-company-name {
+    color: #135D66;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center {
+    width: 35%;
+}
+
+.footer-distributed .footer-center i {
+    background-color: gainsboro;
+    color: white;
+    font-size: 25px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    margin: 10px 15px;
+    vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope {
+    font-size: 17px;
+    line-height: 38px;
+}
+
+.footer-distributed .footer-center p {
+    display: inline-block;
+    color: #135D66;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.footer-distributed .footer-center p span {
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.footer-distributed .footer-center p a {
+    color: #135D66;
+    text-decoration: none;
+    ;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right {
+    width: 30%;
+}
+
+.footer-distributed .footer-company-about {
+    line-height: 20px;
+    color:#003C43;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.footer-distributed .footer-company-about span {
+    display: block;
+    color: #135D66;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons {
+    margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+     background-color:#135D66; 
+    border-radius: 2px;
+    font-size: 20px;
+     color: white; 
+    text-align: center;
+    line-height: 35px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+}
+
+.footer-distributed .footer-icons a:hover {
+    background-color: #135D66;
+}
+
+.footer-links a:hover {
+    
+    text-decoration: underline;
+}
+.img{
+    width: 170px;
+    height: 170px;
+    border-radius: 20%;
+}
+
+@media (max-width: 880px) {
+    .footer-distributed .footer-left, .footer-distributed .footer-center, .footer-distributed .footer-right {
+        display: block;
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    .footer-distributed .footer-center i {
+        margin-left: 0;
+    }
+}  
+video{
+    width: 340px;
+    height: 225px;
+}

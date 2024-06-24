@@ -79,7 +79,7 @@ if(isset($_SESSION['user_id'])){
    <h3 class="title">top categories</h3>
    <div class="flex">
       <a href="../view/search_course.php?"><i class="fas fa-code"></i><span>development</span></a>
-      <a href="#"><i class="fas fa-chart-simple"></i><span>Softskills</span></a>
+      <a href="../view/softskils.php"><i class="fas fa-chart-simple"></i><span>Softskills</span></a>
      
    </div>
 </div>
@@ -98,13 +98,15 @@ if(isset($_SESSION['user_id'])){
       <div class="box tutor">
          
                  <?php 
-                 
-                 if ($_SESSION['user_usertype'] != 'tutor' ) { ?>             
+                  if(isset($_SESSION['user_id'])){ ?>
+
+                    
+              <?php   if ($_SESSION['user_usertype'] != 'tutor' ) { ?>             
                  
                    <h3 class="title">become a tutor</h3>
                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, laudantium.</p>
                      <a href="../teacher/register.php" class="inline-btn">get started</a>
-                  <?php }  ?>
+                  <?php } } ?>
 
       </div>
 
@@ -118,12 +120,13 @@ if(isset($_SESSION['user_id'])){
 
 <section class="courses">
 
-   <h1 class="heading">latest courses</h1>
+
+   <h1 class="heading">Teens 12-18</h1>
 
    <div class="box-container">
 
       <?php
-         $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE status = ? ORDER BY date DESC LIMIT 6");
+         $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE status = ? and level='Teens 12-18' ORDER BY date DESC LIMIT 6");
          $select_courses->execute(['active']);
          if($select_courses->rowCount() > 0){
             while($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)){
@@ -164,9 +167,165 @@ if (isset($_SESSION['user_id'])) {
 <?php } } ?>
    </div>
 
-   <div class="more-btn">
-      <a href="../view/courses.php" class="inline-option-btn">view more</a>
+
+
+</section>
+
+<hr>
+<section class="courses">
+
+
+   <h1 class="heading">junior 5-7 </h1>
+
+   <div class="box-container">
+
+      <?php
+         $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE status = ? and level ='junior 5-7' ORDER BY date DESC LIMIT 6");
+         $select_courses->execute(['active']);
+         if($select_courses->rowCount() > 0){
+            while($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)){
+               $course_id = $fetch_course['id'];
+
+               $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ?");
+               $select_tutor->execute([$fetch_course['tutor_id']]);
+               $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);
+
+              
+      ?>
+      <div class="box">
+         <div class="tutor">
+            <img src="../uploaded_files/<?= $fetch_tutor['image']; ?>" alt="">
+            <div>
+               <h3><?= $fetch_tutor['name']; ?></h3>
+               <span><?= $fetch_course['date']; ?></span>
+            </div>
+         </div>
+         <img src="../uploaded_files/<?= $fetch_course['thumb']; ?>" class="thumb" alt="">
+         <h3 class="title"><?= $fetch_course['title']; ?></h3>
+         
+         <?php
+if (isset($_SESSION['user_id'])) {
+    $select_subscription = $conn->prepare("SELECT * FROM `courses` WHERE user_id =? AND playlist_id =?");
+    $select_subscription->execute([$_SESSION['user_id'], $course_id]);
+    $is_subscribed = $select_subscription->rowCount() > 0;
+    if ($is_subscribed) {?>
+        <a href="../view/playlist.php?get_id=<?= $course_id;?>" class="inline-btn">View Playlist</a>
+    <?php } else {?>
+        <a href="../view/payment.php?get_id=<?= $course_id;?>" class="inline-btn">Subscribe $50</a>
+    <?php }
+} else {?>
+    <a href="../login.php" class="inline-btn">Subscribe $50</a>
+<?php }?>
+      </div>
+     
+<?php } } ?>
    </div>
+
+
+</section>
+<hr>
+<section class="courses">
+
+
+   <h1 class="heading"> kids 8-11 </h1>
+
+   <div class="box-container">
+
+      <?php
+         $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE status = ? and level='kids 8-11' ORDER BY date DESC LIMIT 6");
+         $select_courses->execute(['active']);
+         if($select_courses->rowCount() > 0){
+            while($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)){
+               $course_id = $fetch_course['id'];
+
+               $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ?");
+               $select_tutor->execute([$fetch_course['tutor_id']]);
+               $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);
+
+              
+      ?>
+      <div class="box">
+         <div class="tutor">
+            <img src="../uploaded_files/<?= $fetch_tutor['image']; ?>" alt="">
+            <div>
+               <h3><?= $fetch_tutor['name']; ?></h3>
+               <span><?= $fetch_course['date']; ?></span>
+            </div>
+         </div>
+         <img src="../uploaded_files/<?= $fetch_course['thumb']; ?>" class="thumb" alt="">
+         <h3 class="title"><?= $fetch_course['title']; ?></h3>
+         
+         <?php
+if (isset($_SESSION['user_id'])) {
+    $select_subscription = $conn->prepare("SELECT * FROM `courses` WHERE user_id =? AND playlist_id =?");
+    $select_subscription->execute([$_SESSION['user_id'], $course_id]);
+    $is_subscribed = $select_subscription->rowCount() > 0;
+    if ($is_subscribed) {?>
+        <a href="../view/playlist.php?get_id=<?= $course_id;?>" class="inline-btn">View Playlist</a>
+    <?php } else {?>
+        <a href="../view/payment.php?get_id=<?= $course_id;?>" class="inline-btn">Subscribe $50</a>
+    <?php }
+} else {?>
+    <a href="../login.php" class="inline-btn">Subscribe $50</a>
+<?php }?>
+      </div>
+     
+<?php } } ?>
+   </div>
+
+
+</section>
+<hr>
+<section class="courses">
+
+
+   <h1 class="heading"> Softskills </h1>
+
+   <div class="box-container">
+
+      <?php
+         $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE status = ? and level='soft skils' ORDER BY date DESC LIMIT 6");
+         $select_courses->execute(['active']);
+         if($select_courses->rowCount() > 0){
+            while($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)){
+               $course_id = $fetch_course['id'];
+
+               $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ?");
+               $select_tutor->execute([$fetch_course['tutor_id']]);
+               $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);
+
+              
+      ?>
+      <div class="box">
+         <div class="tutor">
+            <img src="../uploaded_files/<?= $fetch_tutor['image']; ?>" alt="">
+            <div>
+               <h3><?= $fetch_tutor['name']; ?></h3>
+               <span><?= $fetch_course['date']; ?></span>
+            </div>
+         </div>
+         <img src="../uploaded_files/<?= $fetch_course['thumb']; ?>" class="thumb" alt="">
+         <h3 class="title"><?= $fetch_course['title']; ?></h3>
+         
+         <?php
+if (isset($_SESSION['user_id'])) {
+    $select_subscription = $conn->prepare("SELECT * FROM `courses` WHERE user_id =? AND playlist_id =?");
+    $select_subscription->execute([$_SESSION['user_id'], $course_id]);
+    $is_subscribed = $select_subscription->rowCount() > 0;
+    if ($is_subscribed) {?>
+        <a href="../view/playlist.php?get_id=<?= $course_id;?>" class="inline-btn">View Playlist</a>
+    <?php } else {?>
+        <a href="../view/payment.php?get_id=<?= $course_id;?>" class="inline-btn">Subscribe $50</a>
+    <?php }
+} else {?>
+    <a href="../login.php" class="inline-btn">Subscribe $50</a>
+<?php }?>
+      </div>
+     
+<?php } } ?>
+   </div>
+
+
 
 </section>
 

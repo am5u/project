@@ -27,15 +27,15 @@ session_start();
          <thead>
 		 <tr>
 		      <th>#</th>
-               <th>رقم المدرسي</th>
-			   <th>الاسم </th>
-			   <th>الايميل</th>
-               <th>الصوره</th>
+               <th>id</th>
+			   <th>Name</th>
+			   <th>email</th>
+               <th>image</th>
 
-			   <th>الماده الاولى</th>
-               <th>الماده الثانية</th>
-			   <th>الماده الثالثة</th>
-               <th>الماده الرابعة</th>
+			   <th>Quiz</th>
+               <th>Assigment</th>
+			   <th> Courses</th>
+               <th>Attendence</th>
 			   <th>النسبة</th>
 			   <th>النتيجة</th>
 

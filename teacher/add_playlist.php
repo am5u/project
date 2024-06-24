@@ -17,6 +17,8 @@ session_start();
    $title = $_POST['title'];
    $description = $_POST['description'];
    $status = $_POST['status'];
+   $level = $_POST['level'];
+
 
    $image = $_FILES['image']['name'];
    $image = filter_var($image, FILTER_SANITIZE_STRING);
@@ -32,8 +34,8 @@ session_start();
    $image_path = $image_folder . $image;
    move_uploaded_file($image_tmp_name, $image_path);
 
-   $add_playlist = $conn->prepare("INSERT INTO `playlist`(tutor_id, title, description, thumb, status) VALUES(?,?,?,?,?)");
-   $add_playlist->execute([ $_SESSION['teacher_id'], $title, $description, $image, $status]);
+   $add_playlist = $conn->prepare("INSERT INTO `playlist`(tutor_id, title, description, thumb, status,level) VALUES(?,?,?,?,?,?)");
+   $add_playlist->execute([ $_SESSION['teacher_id'], $title, $description, $image, $status,$level]);
 
 
    $message[] = 'new playlist created!';  
@@ -71,6 +73,20 @@ session_start();
          <option value="" selected disabled>-- select status</option>
          <option value="active">active</option>
          <option value="deactive">deactive</option>
+      </select>
+      <p>playlist livel <span>*</span></p>
+
+      <select name="level" class="box" required>
+         <option value="" selected disabled>-- select level</option>
+         <option value="junior 5-7">junior 5-7</option>
+
+         <option value="kids 8-11">kids 8-11</option>
+         <option value="Teen 12-18">Teens 12-18</option>
+         <option value="soft skils">Softskills</option>
+         <option value="
+         ">deactive</option>
+
+         
       </select>
       <p>playlist title <span>*</span></p>
       <input type="text" name="title" maxlength="100" required placeholder="enter playlist title" class="box">
