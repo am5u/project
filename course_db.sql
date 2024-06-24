@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2024 at 06:15 PM
+-- Generation Time: Jun 23, 2024 at 02:09 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -61,8 +61,7 @@ CREATE TABLE `bookmark` (
 
 INSERT INTO `bookmark` (`id`, `user_id`, `playlist_id`) VALUES
 (2, 3, 7),
-(3, 7, 6),
-(4, 8, 6);
+(3, 7, 6);
 
 -- --------------------------------------------------------
 
@@ -87,8 +86,7 @@ CREATE TABLE `cards` (
 INSERT INTO `cards` (`id`, `user_id`, `numcard`, `cardholder`, `cvv`, `Exmonth`, `Exyear`) VALUES
 (1, 3, 2147483647, 'ammar mohamed', 2323, 9, 2023),
 (2, 5, 324342334, 'ammar mohamed', 3443, 9, 2026),
-(3, 3, 2147483647, 'Yasser', 3443, 10, 2028),
-(4, 8, 2147483647, 'amr ramdan', 123, 2, 2023);
+(3, 3, 2147483647, 'Yasser', 3443, 10, 2028);
 
 -- --------------------------------------------------------
 
@@ -171,8 +169,7 @@ INSERT INTO `courses` (`id`, `user_id`, `playlist_id`) VALUES
 (1, 3, 6),
 (2, 5, 6),
 (3, 3, 7),
-(4, 7, 6),
-(5, 8, 6);
+(4, 7, 6);
 
 -- --------------------------------------------------------
 
@@ -272,6 +269,7 @@ CREATE TABLE `tutors` (
 --
 
 INSERT INTO `tutors` (`id`, `name`, `profession`, `email`, `password`, `image`) VALUES
+(1, 'menna', 'musician', 'mennayasser@gmail.com', '1234', 'pic-2.jpg'),
 (2, 'mohamed', 'developer', 'mohamed@gmail.com', '1234', 'unnamed.jpg');
 
 -- --------------------------------------------------------
@@ -297,8 +295,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `image`, `usertype`) VAL
 (1, 'admin', 'admin@gmail.com', 'admin\r\n', 'nagib.jpg', 'Admin'),
 (2, 'menna', 'mennayasser@gmail.com', '1234', 'pic-2.jpg', 'tutor'),
 (3, 'mohamed', 'mohamed@gmail.com', '1234', 'unnamed.jpg', 'tutor'),
-(7, 'ammar', 'ammareldesouki130@gmail.com', '123', 'mohand.JPG', 'student'),
-(8, 'amr', 'amr@gmail.com', '123', 'amr.JPG', 'Student');
+(7, 'ammar', 'ammareldesouki130@gmail.com', '123', 'mohand.JPG', 'student');
 
 --
 -- Indexes for dumped tables
@@ -403,13 +400,13 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `bookmark`
 --
 ALTER TABLE `bookmark`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `cards`
 --
 ALTER TABLE `cards`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -427,7 +424,7 @@ ALTER TABLE `content`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `info_student`
@@ -463,7 +460,7 @@ ALTER TABLE `tutors`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

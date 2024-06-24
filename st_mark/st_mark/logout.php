@@ -1,5 +1,5 @@
 <?php 
-	echo '<script>alert("وداعــــــــــــاً")</script>';
+	echo '<script>alert("LOGOUT")</script>';
 	session_start();
 	$_SESSION["id"] = "";
 	session_destroy();

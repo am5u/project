@@ -22,7 +22,7 @@ if(!isset($_FILES['image']['tmp_name']))
 	$picture=$_FILES['image']['name'];
 	if($picture == "")
 	{
-		echo "<script>alert('من فضلك اختر صورة')</script>";
+		echo "<script>alert('please choose image')</script>";
 	} else {
 
 
@@ -37,7 +37,7 @@ if(!isset($_FILES['image']['tmp_name']))
 			 VALUES ('$name','$email','$password','$picture')";
 
 			mysqli_query($conn,$query);
-			echo "<script>alert('تم الحفظ')</script>";
+			echo "<script>alert('saved')</script>";
 			echo '<script>windows: location="mang_accounts.php"</script>';
 
 		}

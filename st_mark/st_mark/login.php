@@ -61,16 +61,16 @@ if(isset($_POST['login'])){
                <label for="Title" class="col-sm-2 control-label">اسم المستخدم</label>
                <div class="col-sm-10">
                 <input type="text" class="form-control" name="username"
-                 placeholder="اسم المستخدم"  required>
+                 placeholder=" Username"  required>
                </div>
             </div>
 
 
             <div class="form-group col-lg-12 col-sm-8">
-               <label for="Author" class="col-sm-2 control-label">كلمة المرور</label>
+               <label for="Author" class="col-sm-2 control-label">Password </label>
                <div class="col-sm-10">
                   <input type="password" class="form-control" name="password"
-                   placeholder="كلمة المرور"  required>
+                   placeholder= "Password"  required>
                </div>
             </div>
 
@@ -80,7 +80,7 @@ if(isset($_POST['login'])){
             <div class="form-group">
                <div class="col-sm-offset-2 col-sm-10">
                   <button  name="login" class="btn btn-info col-lg-12" data-toggle="modal">
-               دخول
+               Submit
                   </button>
                </div>
              </div>

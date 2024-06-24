@@ -145,12 +145,12 @@ section{
 }
 
 .message span{
-   font-size: 2rem;
-   color:#135D66;
+   font-size: 5rem;
+   color:white;
 }
 
 .message i{
-   font-size: 2.5rem;
+   font-size: 5.5rem;
    color:#e74c3c;
    cursor: pointer;
    transition: .2s linear;
@@ -458,14 +458,19 @@ section{
    gap: 1.5rem;
    align-items: flex-start;
    justify-content: center;
-   background-color: #E3FEF7;
+   background-color: #135D66;
+   color:whitesmoke
 }
 
 .courses .box-container .box{
    border-radius: .5rem;
-   background-color: #E3FEF7;
+   background-color: #135D66;
    padding: 2rem;
+<<<<<<< HEAD
    
+=======
+   color:whitesmoke
+>>>>>>> b9df638a7032794e58e32c680001589400898f57
 }
 .courses .heading {
    color: #003C43;
@@ -488,13 +493,13 @@ section{
 
 .courses .box-container .box .tutor h3{
    font-size: 2rem;
-   color: #003C43;
+   color: whitesmoke;
    margin-bottom: .2rem;
 }
 
 .courses .box-container .box .tutor span{
    font-size: 1.5rem;
-   color: #135D66;
+   color: whitesmoke;
 }
 
 .courses .box-container .box .thumb{
@@ -507,7 +512,7 @@ section{
 
 .courses .box-container .box .title{
    font-size: 2rem;
-   color: #003C43;
+   color: whitesmoke;
    margin-top: .5rem;
    padding: .5rem 0;
 }
@@ -515,10 +520,17 @@ section{
 .courses .more-btn{
    margin-top: 2rem;
    text-align: center;
-   color: #003C43;
+   color: whitesmoke;
+}
+.courses .more-btn :hover{
+      color:black;
+      border-radius: 5px;
+      background:#E3FEF7;
+      box-shadow: 0 0 5px whitesmoke, 0 0 25px whitesmoke, 0 0 100px whitesmoke;
+  
 }
 .courses .h1{
-   color: #003C43;
+   color: whitesmoke;
 }
 
 .about .row{
@@ -526,7 +538,7 @@ section{
    align-items: center;
    gap: 1.5rem;
    flex-wrap: wrap;
-   background-color: #E3FEF7;
+   background:linear-gradient(#77B0AA,#135D66);
 }
 
 .about .row .image{
@@ -541,7 +553,7 @@ section{
 .about .row .content{
    flex: 1 1 40rem;
    text-align: center;
-   background-color: #E3FEF7;
+   background-color: transparent;
 }
 
 .about .row .content h3{
@@ -555,18 +567,51 @@ section{
    color: #003C43;
    padding: 1rem 0;
 }
-.about .row .inline-btn{
-   
+.about .row .btn{
+   .btn {
+      width: 6.5em;
+      height: 2.3em;
+      margin: 0.5em;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 0.625em;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+     }
+     
+     button:hover {
+      color: black;
+     }
+     
+     button:after {
+      content: "";
+      background: white;
+      position: absolute;
+      z-index: -1;
+      left: -20%;
+      right: -20%;
+      top: 0;
+      bottom: 0;
+      transform: skewX(-45deg) scale(0, 1);
+      transition: all 0.5s;
+     }
+     
+     button:hover:after {
+      transform: skewX(-45deg) scale(1, 1);
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+     }
+}
+/* .about .row .content a{
    color: #77B0AA;
    background-color: #77B0AA;
    border: 2px solid #003C43;
-  
-}
-.about .row .content a{
-   color: #77B0AA;
-   background-color: #77B0AA;
-   border: 2px solid #003C43;
-}
+} */
 
 .about .box-container{
    margin-top: 3rem;

@@ -45,16 +45,14 @@ if(isset($message)){
          <img src="../uploaded_files/<?=  $_SESSION['user_image']; ?>" alt="">
          <h3><?=  $_SESSION['user_name'] ?></h3>
          <?php }?>
-         <span>student</span>
+         <span><?php $_SESSION['user_usertype']; ?></span>
         
          <?php if ($_SESSION['user_usertype'] == 'tutor' ) { ?>
             <a href="../teacher/dashboard.php" class="btn">view profile</a>
-            <?php }else { 
-                     if($_SESSION['user_usertype'] == 'Admin') {?> <a href="../admin/dashboard.php" class="btn">view profile</a><?php }else{ ?>              
-               ?>
-                     
-               <a href="../students/dashboard.php" class="btn">view profile</a>
-                     <?php } }  ?>
+            <?php }else { ?>
+           
+               <a href="profile.php" class="btn">view profile</a>
+                     <?php }  ?>
               <div class="flex-btn">
 
                  <a href="../components/user_logout.php" onclick="return confirm('logout from this website?');" class="delete-btn">logout</a>
@@ -99,7 +97,7 @@ if(isset($message)){
          <img src="../uploaded_files/<?= $_SESSION['user_image']; ?>" alt="">
          <h3><?=  $_SESSION['user_name']; ?></h3>
          <span><?= $_SESSION['user_usertype']?></span>
-         <a href="profile.php" class="btn">view profile</a>
+         <a href="../view/profile.php" class="btn">view profile</a>
          <?php
             }else{
          ?>

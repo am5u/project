@@ -33,6 +33,10 @@ $total_comments = $select_comments->rowCount();
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="../css/admin_style.css">
+   <link rel="stylesheet" href="../project/css/admin_style.css">
+    
+   
+
 
 </head>
 <body>

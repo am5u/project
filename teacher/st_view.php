@@ -28,6 +28,7 @@ require_once 'conn.php';
          <thead>
 		 <tr>
 		      <th>#</th>
+<<<<<<< HEAD
                <th>teacher_id</th>
 			   <th>name </th>
 			   <th>email</th>
@@ -39,6 +40,19 @@ require_once 'conn.php';
                <th>Attendence</th>
 			   <th>final_mark</th>
 			   <th>grade</th>
+=======
+               <th>رقم المدرسي</th>
+			   <th>الاسم </th>
+			   <th>الايميل</th>
+               <th>الصوره</th>
+
+			   <th>الماده الاولى</th>
+               <th>الماده الثانية</th>
+			   <th>الماده الثالثة</th>
+               <th>الماده الرابعة</th>
+			   <th>النسبة</th>
+			   <th>النتيجة</th>
+>>>>>>> b9df638a7032794e58e32c680001589400898f57
              <th>إضافه الدرجات</th>
                <th>تعديل</th>
                <th>حذف</th>
@@ -47,7 +61,11 @@ require_once 'conn.php';
 						<?php
 				
                             
+<<<<<<< HEAD
       $sql = "SELECT * FROM  info_student where teacher_number = '".$_SESSION["teacher_id"]."'  ";
+=======
+      $sql = "SELECT * FROM  info_student where teacher_number = '".$_SESSION["user_id"]."'  ";
+>>>>>>> b9df638a7032794e58e32c680001589400898f57
             
     $query = mysqli_query($conn, $sql); 
           

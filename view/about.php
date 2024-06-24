@@ -18,16 +18,18 @@ if(isset($_COOKIE['user_id'])){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>about</title>
 
+
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
    <!-- custom css file link  -->
    <link rel="stylesheet" href="../css/style.css">
 
 </head>
+
 <body>
 
-<?php include '../components/user_header.php'; ?>
+<!-- <?php include '../components/user_header.php'; ?> -->
 
 <!-- about section starts  -->
 
@@ -42,7 +44,9 @@ if(isset($_COOKIE['user_id'])){
       <div class="content">
          <h3>why choose us?</h3>
          <p>Coding heros is an educational structure aims to separate the knowledge of programming and technology in current and future genrations <br> we afford the easiest way in learning with competable prices .</p>
-         <a href="../view/courses.php" class="inline-btn">our courses</a>
+         <a href="../view/courses.php">
+         <button class="btn"> OUR COURSES
+</button></a>
       </div>
 
    </div>
@@ -93,7 +97,6 @@ if(isset($_COOKIE['user_id'])){
 
    <h1 class="heading">student's reviews</h1>
 
-   <div class="box-container">
 
       <div class="box">
          <p>i joined coding heros lately but i gained alot of knlowedge and i will continue my joureny </p>
@@ -204,18 +207,14 @@ if(isset($_COOKIE['user_id'])){
 <!-- reviews section ends -->
 
 
-
-
-
-
-
-
-
-
 <?php include '../components/footer.php'; ?>
 
 <!-- custom js file link  -->
+<script>
+  AOS.init();
+</script>
 <script src="../js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
    
 </body>
 </html>

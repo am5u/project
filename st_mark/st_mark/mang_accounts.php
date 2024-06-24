@@ -29,14 +29,14 @@ if(!isset($_SESSION["admin_id"]) )
          <thead>
 		 <tr>
 		      <th>#</th>
-               <th>الاسم الاول</th>
-			   <th>الاسم الاخير</th>
-               <th>اسم المستخدم</th>
-			   <th>كلمة المرور</th>
-               <th>النوع</th>
-			   <th>الصوره</th>
-               <th>تعديل</th>
-               <th>حذف</th>
+               <th>First Name</th>
+			   <!-- <th>Last name </th> -->
+               <th>password </th>
+			   <!-- <th>كلمة </th> -->
+               <!-- <th>النوع</th> -->
+			   <th>image</th>
+               <th>Edit</th>
+               <th>Delete</th>
             </tr>
 			</thead>
         

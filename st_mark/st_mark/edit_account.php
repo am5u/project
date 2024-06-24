@@ -35,7 +35,7 @@ if(!isset($_FILES['image']['tmp_name']))
 	$picture=$_FILES['image']['name'];
 	if($picture == "")
 	{
-		echo "<script>alert('الرجاء اختيار صورة')</script>";
+		echo "<script>alert( 'Please choose image')</script>";
 	} else {
 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
 	    	echo "<script>alert('PNG, JPG, and JPEG are allowed!')</script>";
@@ -49,10 +49,10 @@ if(!isset($_FILES['image']['tmp_name']))
 			password='$password',picture='$picture' where id='$id'";
 			if(mysqli_query($conn,$sql))
 			{	
-				echo "<script>alert('تم التعديل بنجاح')</script>";
+				echo "<script>alert('Alreay Edit')</script>";
 				echo '<script>windows: location="mang_accounts.php"</script>';
 			}else{
-				echo "<script>alert('حدث خطا')</script>";
+				echo "<script>alert('Deleted ')</script>";
 				echo '<script>windows: location="edit_account.php?id='.$id.'"</script>';
 			}
 			

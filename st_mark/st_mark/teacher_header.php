@@ -37,7 +37,7 @@ $id = $_SESSION['id'];
         <button type="button" 
         class="w-10 btn btn-lg btn-outline-primary 
         col-lg-3 col-md-4 col-sm-11 col-xs-11 button">
-      جميع السجلات</button></a>
+       Teachers</button></a>
 <!--
      
             
@@ -50,7 +50,7 @@ $id = $_SESSION['id'];
   <a href="st_create_account.php">
         <button type="button"
          class="w-20  btn btn-lg btn-outline-success 
-         col-lg-3 col-md-4 col-sm-11 col-xs-11 button">إنشاء حساب لطلاب
+         col-lg-3 col-md-4 col-sm-11 col-xs-11 button">Make Account to student  
       </button></a> 
         
 <!--
@@ -63,7 +63,7 @@ $id = $_SESSION['id'];
         <a href="logout.php">
         <button type="button"
          class=" w-20  btn btn-lg btn-outline-danger 
-         col-lg-3 col-md-4 col-sm-11 col-xs-11 button">خروج
+         col-lg-3 col-md-4 col-sm-11 col-xs-11 button">Exit
       </button></a> 
         
   </div>

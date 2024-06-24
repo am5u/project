@@ -32,7 +32,7 @@ if(isset($_POST['yes'])){
 	$query = "DELETE from info_student where id = '$id' ";
 	mysqli_query($conn,$query);
 ?>
-	<script>alert('تم الحذف')</script>
+	<script>alert('Deleted ')</script>
 	<script>windows: location="st_view.php"</script>
 <?php
 }
@@ -53,21 +53,21 @@ if(isset($_POST['no'])){
 				<img src="images/<?php echo "$uppicture";?>"  style="width: 17%; height:">
 						
 						
-            <h3 width="50%">الاسم </h3>
+            <h3 width="50%">Name </h3>
             <strong><?php echo "$uplastname , $upfirstname";?></strong>
 
 							
               <br>
-        <font style="font-size: 20px"><strong>متاكد من الحذف؟</strong></font>
+        <font style="font-size: 20px"><strong>Do You need to delete  </strong></font>
 						<br>
 						
 							                 
-            <input type="submit" name="yes"  value="نعم"
+            <input type="submit" name="yes"  value="Yes"
         class="btn btn-lg btn-danger col-lg-3 col-md-4 col-sm-11 col-xs-11 button">
       
        <br>
 	   <br>
-        <input type="submit" name="no"  value="لا"
+        <input type="submit" name="no"  value="No"
         class="btn btn-lg btn-primary col-lg-3 col-md-4 col-sm-11 col-xs-11 button">
       	
            

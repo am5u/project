@@ -35,7 +35,7 @@
 <body>
 	
 	<br /> <br /> <br /> <br />
-	<b style="color:blue;">نتيجه الطالب</b>
+	<b style="color:blue;">Student Result </b>
 	<?php
 		$date = date("Y-m-d", strtotime("+6 HOURS"));
 		echo $date;
@@ -45,15 +45,15 @@
 		<thead>
 			<tr>
 			  <th>#</th>
-               <th>رقم المدرسي</th>
-			   <th>الاسم الاول</th>
-			   <th>الاسم الاخير</th>
-			   <th>الماده الاولى</th>
-               <th>الماده الثانية</th>
-			   <th>الماده الثالثة</th>
-               <th>الماده الرابعة</th>
-			   <th>النسبة</th>
-			   <th>النتيجة</th>
+               <th>Teacher Id </th>
+			   <th>Name </th>
+			   <!-- <th>الاسم الاخير</th> -->
+			   <th> Quiz</th>
+               <th>Assigment </th>
+			   <th>Courses </th>
+               <th>Attendence </th>
+			   <th>Result</th>
+			   <th>Final mark</th>
 			</tr>
 		</thead>
 		<tbody>

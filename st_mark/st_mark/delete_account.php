@@ -49,14 +49,14 @@ if(isset($_POST['no'])){
 	        <img src="images/<?php echo "$delpicture";?>" >
 			<h3> <?php echo "$delfirstname $dellastname";?></h3>	
 			<h3> <?php echo "$delusername";?></h3>
-			<strong>هل انت متاكد من الحذف؟</strong>	
+			<strong> Are You sure to delete </strong>	
 	    <br>
-        <input type="submit" name="yes"  value="نعم"
+        <input type="submit" name="yes"  value="yes"
         class="btn btn-lg btn-outline-danger col-lg-3 col-md-4 col-sm-11 col-xs-11 button">
       
        <br>
 	   <br>
-        <input type="submit" name="no"  value="لا"
+        <input type="submit" name="no"  value="No"
         class="btn btn-lg btn-outline-primary col-lg-3 col-md-4 col-sm-11 col-xs-11 button">
       	
            
